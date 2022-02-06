@@ -3,6 +3,16 @@ entries:
   vima:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2022-02-06T07:23:26.801357945Z"
+    description: A Helm chart for vima
+    digest: 87f56cb2863c496cb385cc3c545f009ae106ca469419c5be30833faf8578036e
+    name: vima
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/vima-1.0.2/vima-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2022-02-06T03:20:35.419846919Z"
     description: A Helm chart for vima
     digest: b1d578ea5105950a244f0c5ad4d65281993fa5940093641b7f5f097075671599
@@ -11,4 +21,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2022-02-06T03:20:35.41985252Z"
+generated: "2022-02-06T07:23:26.801364446Z"
