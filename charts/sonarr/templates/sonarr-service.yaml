@@ -6,7 +6,7 @@ metadata:
   labels:
     app: sonarr
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: sonarr
   ports:
