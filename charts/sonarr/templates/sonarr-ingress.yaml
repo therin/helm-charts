@@ -16,4 +16,4 @@ spec:
               service:
                 name: sonarr
                 port:
-                  number: 9000
+                  number: 80
