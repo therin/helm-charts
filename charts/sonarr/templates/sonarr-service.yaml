@@ -10,5 +10,5 @@ spec:
   selector:
     app: sonarr
   ports:
-    - port: 90
+    - port: 9000
       targetPort: 8989
