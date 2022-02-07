@@ -32,3 +32,5 @@ spec:
         - name: sonarr-config
           persistentVolumeClaim:
             claimName: sonarr-config
+      nodeSelector:
+        kubernetes.io/hostname: k3d-main-server-0
