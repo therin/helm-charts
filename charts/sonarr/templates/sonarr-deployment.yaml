@@ -28,9 +28,15 @@ spec:
           volumeMounts:
             - name: sonarr-config
               mountPath: /config
+            - name: torrents-volume
+              mountPath: /torrents       
       volumes:
         - name: sonarr-config
           persistentVolumeClaim:
             claimName: sonarr-config
+        - name: torrents-volume
+          hostPath:
+            path: /torrents
+            type: DirectoryOrCreate
       nodeSelector:
         kubernetes.io/hostname: k3d-main-server-0
