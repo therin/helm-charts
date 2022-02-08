@@ -37,4 +37,6 @@ spec:
         - name: saved
           persistentVolumeClaim:
             claimName: saved
+      nodeSelector:
+        kubernetes.io/hostname: k3d-main-server-0            
 status: {}
