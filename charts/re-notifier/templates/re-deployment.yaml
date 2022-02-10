@@ -20,9 +20,17 @@ spec:
       containers:
         - name: re-notifier
           image: ghcr.io/therin/re-notifier:latest
-          envFrom:
-            - configMapRef:
-                name: re-notifier
+          env:
+            - name: TELEGRAM_BOT_TOKEN
+              valueFrom:
+                configMapKeyRef:
+                  name: telegram-bot-token
+                  key: token
+            - name: TELEGRAM_CHAT_IDS
+              valueFrom:
+                secretKeyRef:
+                  name: telegram-chat-ids
+                  key: chats
           volumeMounts:
             - name: re-database
               mountPath: /database
