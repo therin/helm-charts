@@ -23,7 +23,7 @@ spec:
           env:
             - name: TELEGRAM_BOT_TOKEN
               valueFrom:
-                configMapKeyRef:
+                secretKeyRef:
                   name: telegram-bot-token
                   key: token
             - name: TELEGRAM_CHAT_IDS
