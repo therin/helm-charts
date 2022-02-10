@@ -26,6 +26,8 @@ spec:
           volumeMounts:
             - name: re-database
               mountPath: /database
+      imagePullSecrets:
+      - name: regcred              
       volumes:
         - name: re-database
           persistentVolumeClaim:
