@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: sonarr
+  name: re-notifier
   labels:
-    app: sonarr
+    app: re-notifier
 data:
   TZ: Australia/Sydney
   PUID: "1000"
