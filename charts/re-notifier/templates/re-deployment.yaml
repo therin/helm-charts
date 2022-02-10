@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: re-notifier
+  labels:
+    app: re-notifier
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: re-notifier
+  template:
+    metadata:
+      labels:
+        app: re-notifier
+      annotations:
+        re-notifier.cfg: v1
+    spec:
+      containers:
+        - name: re-notifier
+          image: ghcr.io/therin/re-notifier:latest
+          envFrom:
+            - configMapRef:
+                name: re-notifier
+          volumeMounts:
+            - name: re-database
+              mountPath: /database
+      volumes:
+        - name: re-database
+          persistentVolumeClaim:
+            claimName: re-database
