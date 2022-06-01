@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jackett
+  labels:
+    app: jackett
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jackett
+  template:
+    metadata:
+      labels:
+        app: jackett
+      annotations:
+        jackett.cfg: v1
+    spec:
+      containers:
+        - name: jackett
+          image: linuxserver/jackett:latest
+          ports:
+            - containerPort: 9117
+          envFrom:
+            - configMapRef:
+                name: jackett
+          volumeMounts:
+            - name: jackett-config
+              mountPath: /config
+      volumes:
+        - name: jackett-config
+          persistentVolumeClaim:
+            claimName: jackett-config
+      nodeSelector:
+        kubernetes.io/hostname: k3d-main-server-0

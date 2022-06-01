@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jackett
+  labels:
+    app: jackett
+data:
+  TZ: Australia/Sydney
+  PUID: "1000"
+  PGID: "1000"
+  AUTO_UPDATE: "true"
