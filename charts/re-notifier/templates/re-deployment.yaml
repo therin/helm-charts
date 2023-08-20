@@ -20,6 +20,8 @@ spec:
       containers:
         - name: re-notifier
           image: ghcr.io/therin/re-notifier:latest
+          ports:
+            - containerPort: 5900
           env:
           - name: TELEGRAM_BOT_TOKEN
             valueFrom:
