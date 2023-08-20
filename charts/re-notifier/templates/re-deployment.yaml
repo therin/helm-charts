@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: re-notifier
-          image: ghcr.io/PUT_THERIN_IN_HERE/re-notifier:latest
+          image: ghcr.io/therin/re-notifier:latest
           env:
           - name: TELEGRAM_BOT_TOKEN
             valueFrom:
