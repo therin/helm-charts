@@ -13,6 +13,16 @@ entries:
     version: 1.0.0
   re-notifier:
   - apiVersion: v2
+    appVersion: 1.0.13
+    created: "2023-08-20T02:52:33.965160047Z"
+    description: A Helm chart for re-notifier
+    digest: ff215fd5c04aa25dbfd1e96fd70312bafd58e7499f5d238d965f3d949186ca8f
+    name: re-notifier
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/re-notifier-1.0.12/re-notifier-1.0.12.tgz
+    version: 1.0.12
+  - apiVersion: v2
     appVersion: 1.0.12
     created: "2023-08-20T01:57:57.114662156Z"
     description: A Helm chart for re-notifier
@@ -276,4 +286,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2023-08-20T01:57:57.114724857Z"
+generated: "2023-08-20T02:52:33.965580353Z"
