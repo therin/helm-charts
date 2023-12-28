@@ -146,6 +146,16 @@ entries:
     version: 1.0.0
   sonarr:
   - apiVersion: v2
+    appVersion: 1.0.8
+    created: "2023-12-28T19:18:22.445041083Z"
+    description: A Helm chart for sonarr
+    digest: a8f10c04d380162f378423e1bf1d01e5c477e7e08efaf840cf4af1dd742e2213
+    name: sonarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/sonarr-1.0.11/sonarr-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v2
     appVersion: 1.0.7
     created: "2023-08-20T01:06:38.18825439Z"
     description: A Helm chart for sonarr
@@ -286,4 +296,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2023-08-20T02:52:33.965580353Z"
+generated: "2023-12-28T19:18:22.445106315Z"
