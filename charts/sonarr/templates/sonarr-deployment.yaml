@@ -29,7 +29,7 @@ spec:
             - name: sonarr-config
               mountPath: /config
             - name: torrents-volume
-              mountPath: /storage    
+              mountPath: /torrents
       volumes:
         - name: sonarr-config
           persistentVolumeClaim:
