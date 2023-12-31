@@ -37,8 +37,4 @@ spec:
             - name: re-database
               mountPath: /database
       imagePullSecrets:
-      - name: regcred              
-      volumes:
-        - name: re-database
-          persistentVolumeClaim:
-            claimName: re-database
+      - name: regcred
