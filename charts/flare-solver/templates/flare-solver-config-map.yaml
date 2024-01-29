@@ -2,9 +2,9 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: jackett
+  name: flare-solver
   labels:
-    app: jackett
+    app: flare-solver
 data:
   TZ: Australia/Sydney
   PUID: "1000"

@@ -1,0 +1,36 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flare-solver
+  labels:
+    app: flare-solver
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flare-solver
+  template:
+    metadata:
+      labels:
+        app: flare-solver
+      annotations:
+        flare-solver.cfg: v1
+    spec:
+      containers:
+        - name: flare-solver
+          image: ghcr.io/flaresolverr/flaresolverr:latest
+          ports:
+            - containerPort: 8191
+          envFrom:
+            - configMapRef:
+                name: flare-solver
+          volumeMounts:
+            - name: flare-solver-config
+              mountPath: /config
+      volumes:
+        - name: flare-solver-config
+          persistentVolumeClaim:
+            claimName: flare-solver-config
+      nodeSelector:
+        kubernetes.io/hostname: k3d-main-server-0
