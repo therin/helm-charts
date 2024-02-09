@@ -32,6 +32,17 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/jackett-1.0.0/jackett-1.0.0.tgz
     version: 1.0.0
+  radarr:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-02-09T01:23:21.75625728Z"
+    description: A Helm chart for radarr
+    digest: 728bb90f8985e0e2e4c68754356609be9d76baeea1071786de397fbd51f11abf
+    name: radarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/radarr-1.0.0/radarr-1.0.0.tgz
+    version: 1.0.0
   re-notifier:
   - apiVersion: v2
     appVersion: 1.0.14
@@ -357,4 +368,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-01-29T05:55:24.928368128Z"
+generated: "2024-02-09T01:23:21.756355423Z"
