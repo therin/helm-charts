@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  labels:
+    app: radarr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: radarr
+  template:
+    metadata:
+      labels:
+        app: radarr
+      annotations:
+        radarr.cfg: v1
+    spec:
+      containers:
+        - name: radarr
+          image: linuxserver/radarr:latest
+          ports:
+            - containerPort: 7878
+          envFrom:
+            - configMapRef:
+                name: radarr
+          volumeMounts:
+            - name: radarr-config
+              mountPath: /config
+            - name: torrents-volume
+              mountPath: /storage
+      volumes:
+        - name: radarr-config
+          persistentVolumeClaim:
+            claimName: radarr-config
+        - name: torrents-volume
+          hostPath:
+            path: /torrents
+            type: DirectoryOrCreate
+      nodeSelector:
+        kubernetes.io/hostname: k3d-main-server-0

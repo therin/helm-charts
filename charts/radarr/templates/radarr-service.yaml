@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr
+  labels:
+    app: radarr
+spec:
+  type: NodePort
+  selector:
+    app: radarr
+  ports:
+    - name: "7878"
+      port: 7878
+      targetPort: 7878
+      protocol: TCP
+      nodePort: 30058
