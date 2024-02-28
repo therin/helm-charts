@@ -32,6 +32,29 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/jackett-1.0.0/jackett-1.0.0.tgz
     version: 1.0.0
+  librechat:
+  - apiVersion: v2
+    created: "2024-02-28T07:07:42.827756892Z"
+    dependencies:
+    - condition: meilisearch.enabled
+      name: meilisearch
+      repository: https://meilisearch.github.io/meilisearch-kubernetes
+      version: 0.4.0
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.17.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.12.2
+    description: Frontend for AI endpoints
+    digest: 0ad016f2b6521a6f8afbf442fae6ad8972b9eafab5f1ee64c7fd8b82e2b08829
+    name: librechat
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-1.0.0/librechat-1.0.0.tgz
+    version: 1.0.0
   radarr:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -368,4 +391,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-02-09T01:23:21.756355423Z"
+generated: "2024-02-28T07:07:42.82782531Z"
