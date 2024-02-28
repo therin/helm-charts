@@ -22,7 +22,8 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4.0.0
         with:
-          version: v4.0.0
+          version: 'latest' # default is latest (stable)
+          token: ${{ secrets.GITHUB_TOKEN }} # only needed if version is 'latest'
 
       - name: Add repositories
         run: |
