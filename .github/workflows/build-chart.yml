@@ -27,8 +27,8 @@ jobs:
 
       - name: Add repositories
         run: |
-          helm pull redis oci://registry-1.docker.io/bitnamicharts/redis
-          helm pull mongodb oci://registry-1.docker.io/bitnamicharts/mongodb
+          helm pull oci://registry-1.docker.io/bitnamicharts/redis
+          helm pull oci://registry-1.docker.io/bitnamicharts/mongodb
           helm repo add meilisearch https://meilisearch.github.io/meilisearch-kubernetes
 
       - name: Run chart-releaser
