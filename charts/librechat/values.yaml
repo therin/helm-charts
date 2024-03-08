@@ -152,6 +152,7 @@ config:
     MEILI_HTTP_ADDR: librechat-meilisearch:7700
     MEILI_NO_ANALYTICS: "true"
     SEARCH: true
+    MONGO_URI: mongodb://127.0.0.1:27017/LibreChat
 
 meilisearch:
   enabled: true
@@ -338,7 +339,7 @@ redis:
 ##
 mongodb:
   ## Enable or disable MongoDB dependency completely.
-  enabled: true
+  enabled: false
 
   auth:
     rootPassword: blob-bla
