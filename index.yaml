@@ -34,6 +34,28 @@ entries:
     version: 1.0.0
   librechat:
   - apiVersion: v2
+    created: "2024-03-08T07:33:44.54434278Z"
+    dependencies:
+    - condition: meilisearch.enabled
+      name: meilisearch
+      repository: https://meilisearch.github.io/meilisearch-kubernetes
+      version: 0.4.0
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.17.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.12.2
+    description: Frontend for AI endpoints
+    digest: 438767344eb6ca015a7bfe1b6a4acfc3743bc1e8545a8ef3dd1ffa1ee68f7493
+    name: librechat
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-1.0.11/librechat-1.0.11.tgz
+    version: 1.0.11
+  - apiVersion: v2
     created: "2024-03-08T07:05:52.643769161Z"
     dependencies:
     - condition: meilisearch.enabled
@@ -611,4 +633,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-03-08T07:05:52.643862396Z"
+generated: "2024-03-08T07:33:44.544453867Z"
