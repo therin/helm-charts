@@ -341,7 +341,7 @@ mongodb:
   enabled: true
 
   auth:
-    # rootPassword:
+    rootPassword: blob-bla
     usernames:
       - librechat
     # passwords:
