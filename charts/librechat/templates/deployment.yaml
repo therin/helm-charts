@@ -48,6 +48,9 @@ spec:
                 secretKeyRef:
                   name: {{ $secretKeyRef.secretName }}
                   key: {{ $secretKeyRef.secretKey }}
+
+            - name: MONGO_URI
+              value: "mongodb://{{ .Values.mongodb.service }}:{{ .Values.mongodb.ports.mongodb }}"
             {{- end }}
           ports:
             - name: http
