@@ -339,7 +339,7 @@ redis:
 ##
 mongodb:
   ## Enable or disable MongoDB dependency completely.
-  enabled: false
+  enabled: true
 
   auth:
     rootPassword: blob-bla
