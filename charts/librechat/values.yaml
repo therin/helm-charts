@@ -152,7 +152,6 @@ config:
     MEILI_HTTP_ADDR: librechat-meilisearch:7700
     MEILI_NO_ANALYTICS: "true"
     SEARCH: true
-    MONGO_URI: "mongodb://{{ .Values.mongodb.service.clusterIP }}:{{ Values.mongodb.service.ports.mongodb }}"
 
 meilisearch:
   enabled: true
