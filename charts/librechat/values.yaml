@@ -343,6 +343,7 @@ mongodb:
 
   auth:
     rootPassword: blob-bla
+    replicaSetKey: replica-bla
     usernames:
       - librechat
     # passwords:
