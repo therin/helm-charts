@@ -49,8 +49,6 @@ spec:
                   name: {{ $secretKeyRef.secretName }}
                   key: {{ $secretKeyRef.secretKey }}
             {{- end }}
-            - name: MONGO_URI
-              value: "mongodb://{{ .Values.mongodb.service.clusterIP }}:{{ .Values.mongodb.service.ports.mongodb }}"
           ports:
             - name: http
               containerPort: 3080
