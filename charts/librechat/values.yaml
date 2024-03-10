@@ -39,7 +39,7 @@ securityContext: {}
   # runAsUser: 1000
 
 networkPolicies:
-  enabled: true
+  enabled: false
 
 service:
   type: ClusterIP
@@ -72,7 +72,7 @@ resources: {}
 autoscaling:
   enabled: false
   minReplicas: 1
-  maxReplicas: 100
+  maxReplicas: 1
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
@@ -352,18 +352,21 @@ mongodb:
     databases:
       - librechat
 
-  externalAccess:
-    enabled: true
-    service:
-      type: LoadBalancer
-      port: 27017
-    autoDiscovery:
-      enabled: true
+  service:
+    nameOverride: mongodb-service
 
-  rbac:
-    create: true
+  # externalAccess:
+  #   enabled: true
+  #   service:
+  #     type: LoadBalancer
+  #     port: 27017
+  #   autoDiscovery:
+  #     enabled: true
 
-  architecture: replicaset
+  # rbac:
+  #   create: true
+
+  architecture: standalone
   replicaCount: 1
   arbiter:
     enabled: false
