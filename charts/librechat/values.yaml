@@ -342,16 +342,25 @@ mongodb:
   enabled: true
 
   auth:
-    enabled: false
+    enabled: true
     rootPassword: blob-bla
     replicaSetKey: replica-bla
     usernames:
       - librechat
     # passwords:
+    password: sg9BlnfzGND2D7SL
     databases:
       - librechat
 
-  architecture: standalone
+  externalAccess:
+    enabled: true
+    service:
+      type: LoadBalancer
+      port: 27017
+    autoDiscovery:
+      enabled: true
+
+  architecture: replicaset
   replicaCount: 1
   arbiter:
     enabled: false
