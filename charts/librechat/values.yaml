@@ -42,8 +42,8 @@ networkPolicies:
   enabled: false
 
 service:
-  type: ClusterIP
-  port: 80
+  type: NodePort
+  port: 30058
 
 ingress:
   enabled: false
