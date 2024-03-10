@@ -153,6 +153,7 @@ config:
     MEILI_NO_ANALYTICS: "true"
     SEARCH: true
     MONGO_URI: "mongodb+srv://lewis:iWoHKA0VOeUYEIzd@librechat.jwse9ku.mongodb.net/LibreChat]?retryWrites=true"
+    JWT_SECRET_PROD: bla1234
 
 meilisearch:
   enabled: true
