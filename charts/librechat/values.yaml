@@ -43,7 +43,7 @@ networkPolicies:
 
 service:
   type: NodePort
-  port: 30058
+  port: 30059
 
 ingress:
   enabled: false
