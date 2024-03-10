@@ -43,7 +43,9 @@ networkPolicies:
 
 service:
   type: NodePort
-  port: 30059
+  port: 3080
+  targetPort: 3080
+  nodePort: 30059
 
 ingress:
   enabled: false
