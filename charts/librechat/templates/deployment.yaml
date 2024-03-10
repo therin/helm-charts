@@ -50,7 +50,7 @@ spec:
                   key: {{ $secretKeyRef.secretKey }}
             {{- end }}
             - name: MONGO_URI
-              value: mongodb://librechat-mongodb:27017/LibreChat
+              value: "mongodb+srv://lewis:iWoHKA0VOeUYEIzd@librechat.jwse9ku.mongodb.net/LibreChat]?retryWrites=true"
           ports:
             - name: http
               containerPort: 3080

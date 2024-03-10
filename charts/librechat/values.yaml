@@ -152,7 +152,7 @@ config:
     MEILI_HTTP_ADDR: librechat-meilisearch:7700
     MEILI_NO_ANALYTICS: "true"
     SEARCH: true
-    MONGO_URI: mongodb://librechat-mongodb:27017/LibreChat
+    MONGO_URI: "mongodb+srv://lewis:iWoHKA0VOeUYEIzd@librechat.jwse9ku.mongodb.net/LibreChat]?retryWrites=true"
 
 meilisearch:
   enabled: true
@@ -339,7 +339,7 @@ redis:
 ##
 mongodb:
   ## Enable or disable MongoDB dependency completely.
-  enabled: true
+  enabled: false
 
   auth:
     enabled: true
@@ -353,8 +353,22 @@ mongodb:
       - librechat
 
   service:
-    nameOverride: mongodb-service
+    nameOverride: release-name-mongodb
+    type: ClusterIP
+    port: 27017
 
+      # -- Service HTTP port
+  service:
+    # -- Kubernetes Service type
+    type: ClusterIP
+    port: 7700
+    # -- Additional annotations for service
+    annotations: {}
+
+  container:
+    containerPort: 7700
+
+  
   # externalAccess:
   #   enabled: true
   #   service:
