@@ -3,7 +3,7 @@ apiVersion: v2
 appVersion: 2.7.1
 description: A web-based collaborative LaTeX editor
 name: overleaf
-version: 3.2.10
+version: 3.2.11
 kubeVersion: ">=1.16.0-0"
 keywords:
   - overleaf

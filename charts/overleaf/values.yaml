@@ -49,6 +49,10 @@ service:
 probes:
   liveness:
     enabled: false
+  readiness:
+    enabled: false
+  startup:
+    enabled: false
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
