@@ -9,7 +9,7 @@ image:
   # -- image repository
   repository: sharelatex/sharelatex
   # -- image tag
-  tag: 2.7.1
+  tag: "latest"
   # -- image pull policy
   pullPolicy: IfNotPresent
 
