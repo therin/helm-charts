@@ -11,7 +11,7 @@ image:
   # -- image repository
   repository: sharelatex/sharelatex
   # -- image tag
-  tag: "latest"
+  tag: "4.1"
   # -- image pull policy
   pullPolicy: IfNotPresent
 
@@ -43,16 +43,16 @@ service:
     type: NodePort
     ports:
       http:
-        port: 4000
+        port: 80
         nodePort: 30050
 
-probes:
-  liveness:
-    enabled: false
-  readiness:
-    enabled: false
-  startup:
-    enabled: false
+# probes:
+#   liveness:
+#     enabled: false
+#   readiness:
+#     enabled: false
+#   startup:
+#     enabled: false
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
