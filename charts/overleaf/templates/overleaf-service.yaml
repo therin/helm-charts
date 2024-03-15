@@ -3,8 +3,8 @@ kind: Service
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: overleaf
-  name: overleaf
+    io.kompose.service: overleaf-service
+  name: overleaf-service
 spec:
   type: NodePort
   ports:
@@ -14,4 +14,4 @@ spec:
       protocol: TCP
       nodePort: 30055
   selector:
-    io.kompose.service: overleaf
+    io.kompose.service: overleaf-service
