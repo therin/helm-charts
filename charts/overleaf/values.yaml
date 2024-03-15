@@ -5,6 +5,8 @@
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
 
+# Example official overleaf docker compose: https://github.com/overleaf/overleaf/blob/old-master/docker-compose.yml
+
 image:
   # -- image repository
   repository: sharelatex/sharelatex
@@ -24,7 +26,15 @@ env:
   SHARELATEX_REDIS_HOST: overleaf-redis-master
   # -- The host name of the Redis instance to use. (Both `SHARELATEX_REDIS_HOST` and `REDIS_HOST` are required)
   REDIS_HOST:
-
+  SHARELATEX_APP_NAME: Overleaf Community Edition
+  ENABLED_LINKED_FILE_TYPES: 'url,project_file'
+  # Enables Thumbnail generation using ImageMagick
+  ENABLE_CONVERSIONS: 'true'
+  # Disables email confirmation requirement
+  EMAIL_CONFIRMATION_DISABLED: 'true'
+  # temporary fix for LuaLaTex compiles
+  # see https://github.com/overleaf/overleaf/issues/695
+  TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
