@@ -12,6 +12,6 @@ spec:
       port: 80
       targetPort: 80
       protocol: TCP
-      nodePort: 30055
+      nodePort: 30060
   selector:
     io.kompose.service: overleaf-service
