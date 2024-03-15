@@ -62,10 +62,11 @@ redis:
 # @default -- See values.yaml
 mongodb:
   enabled: true
-  architecture: standalone
+  architecture: replicaset
   fullnameOverride: overleaf-mongodb
   auth:
     enabled: false
+    replicaSetKey: replica-bla-overleaf
   persistence:
     enabled: false
     # storageClass: ""
