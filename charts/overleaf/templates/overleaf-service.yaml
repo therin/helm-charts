@@ -11,4 +11,5 @@ spec:
     - port: 80
       nodePort: 30051
   selector:
-    io.kompose.service: overleaf-service
+    app.kubernetes.io/name: overleaf
+    app.kubernetes.io/instance: release-name
