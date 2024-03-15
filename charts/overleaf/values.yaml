@@ -43,7 +43,7 @@ service:
     ports:
       http:
         port: 80
-        nodePort: 30051
+        nodePort: 30050
 
 ingress:
   # -- Enable and configure ingress settings for the chart under this key.
