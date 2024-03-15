@@ -1,5 +1,20 @@
 apiVersion: v1
 entries:
+  common:
+  - apiVersion: v2
+    created: "2024-03-15T02:17:50.054255109Z"
+    description: Function library for k8s-at-home charts
+    digest: 0f86487a823717c14aafefe6e158ee81a81cbdfab306856451bc97002fb95025
+    home: https://github.com/k8s-at-home/library-charts/tree/main/stable/common
+    keywords:
+    - k8s-at-home
+    - common
+    kubeVersion: '>=1.16.0-0'
+    name: common
+    type: library
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/common-4.5.3/common-4.5.3.tgz
+    version: 4.5.3
   flare-solver:
   - apiVersion: v2
     appVersion: 1.0.1
@@ -825,6 +840,36 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/librechat-1.0.0/librechat-1.0.0.tgz
     version: 1.0.0
+  overleaf:
+  - apiVersion: v2
+    appVersion: 2.7.1
+    created: "2024-03-15T02:17:50.167942567Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      version: 4.5.3
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.17.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.12.2
+    description: A web-based collaborative LaTeX editor
+    digest: 9b87e4a456c953bf4451b6b9b556f1ae3a132a3584fd61de086e294ffecb9e38
+    home: https://github.com/k8s-at-home/charts/tree/master/charts/stable/overleaf
+    icon: https://avatars.githubusercontent.com/u/6359919?s=200&v=4
+    keywords:
+    - overleaf
+    - sharelatex
+    kubeVersion: '>=1.16.0-0'
+    name: overleaf
+    sources:
+    - https://github.com/overleaf/overleaf
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/overleaf-3.1.2/overleaf-3.1.2.tgz
+    version: 3.1.2
   radarr:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -1161,4 +1206,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-03-10T08:00:25.398714312Z"
+generated: "2024-03-15T02:17:50.168074774Z"
