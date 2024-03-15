@@ -32,6 +32,7 @@ env:
   ENABLE_CONVERSIONS: 'true'
   # Disables email confirmation requirement
   EMAIL_CONFIRMATION_DISABLED: 'true'
+  SHARELATEX_BEHIND_PROXY: 'true'
   # temporary fix for LuaLaTex compiles
   # see https://github.com/overleaf/overleaf/issues/695
   TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
