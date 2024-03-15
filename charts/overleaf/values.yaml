@@ -11,14 +11,14 @@ image:
   # -- image repository
   repository: sharelatex/sharelatex
   # -- image tag
-  tag: "4.1"
+  tag: "latest"
   # -- image pull policy
   pullPolicy: IfNotPresent
 
-podSecurityContext:
-  sysctls:
-  - name: net.ipv6.conf.all.disable_ipv6
-    value: 1
+# podSecurityContext:
+#   sysctls:
+#   - name: net.ipv6.conf.all.disable_ipv6
+#     value: 1
 
 # -- environment variables. See more environment variables in the [overleaf documentation](https://github.com/overleaf/overleaf/wiki/Configuring-Overleaf).
 # @default -- See below
