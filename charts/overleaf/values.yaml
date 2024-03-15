@@ -63,7 +63,7 @@ redis:
 mongodb:
   enabled: true
   architecture: replicaset
-  replicaCount: 1
+  replicaCount: 2
   fullnameOverride: overleaf-mongodb
   auth:
     enabled: false
