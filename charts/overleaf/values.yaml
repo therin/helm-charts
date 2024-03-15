@@ -43,7 +43,7 @@ service:
     type: NodePort
     ports:
       http:
-        port: 80
+        port: 4000
         nodePort: 30050
 
 ingress:
