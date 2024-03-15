@@ -19,9 +19,9 @@ env:
   # -- Set the container timezone
   TZ: UTC
   # -- The URL of the Mongo database to use.
-  SHARELATEX_MONGO_URL:
+  SHARELATEX_MONGO_URL: mongodb://overleaf-mongodb:27017/sharelatex
   # -- The host name of the Redis instance to use. (Both `SHARELATEX_REDIS_HOST` and `REDIS_HOST` are required)
-  SHARELATEX_REDIS_HOST:
+  SHARELATEX_REDIS_HOST: overleaf-redis-master
   # -- The host name of the Redis instance to use. (Both `SHARELATEX_REDIS_HOST` and `REDIS_HOST` are required)
   REDIS_HOST:
 
@@ -50,7 +50,10 @@ persistence:
 #    For more options see [redis chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/redis)
 # @default -- See values.yaml
 redis:
-  enabled: false
+  enabled: true
+  fullnameOverride: overleaf-redis
+  replica:
+    replicaCount: 1
   auth:
     enabled: false
 
@@ -58,11 +61,14 @@ redis:
 #    For more options see [mongodb chart documentation](https://github.com/bitnami/charts/tree/master/bitnami/mongodb)
 # @default -- See values.yaml
 mongodb:
-  enabled: false
+  enabled: true
   architecture: standalone
+  fullnameOverride: overleaf-mongodb
   auth:
     enabled: false
   persistence:
     enabled: false
     # storageClass: ""
     # size: 8Gi
+
+nodeSelector: {kubernetes.io/hostname: k3d-main-server-0}
