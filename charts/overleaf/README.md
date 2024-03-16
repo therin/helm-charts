@@ -20,7 +20,6 @@ Kubernetes: `>=1.16.0-0`
 |------------|------|---------|
 | https://charts.bitnami.com/bitnami | mongodb | 12.1.22 |
 | https://charts.bitnami.com/bitnami | redis | 16.13.1 |
-| https://library-charts.k8s-at-home.com | common | 4.5.2 |
 
 ## TL;DR
 

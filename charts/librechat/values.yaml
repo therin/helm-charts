@@ -44,7 +44,6 @@ networkPolicies:
 service:
   type: NodePort
   port: 3080
-  targetPort: 3080
   nodePort: 30059
 
 ingress:
@@ -142,7 +141,7 @@ config:
     ALLOW_SOCIAL_LOGIN: "false"
     ALLOW_SOCIAL_REGISTRATION: "false"
     APP_TITLE: "Librechat"
-    CUSTOM_FOOTER: "Provided with ❤️"
+    CUSTOM_FOOTER: "Cubiculum edition"
     DEBUG_CONSOLE: "true"
     DEBUG_LOGGING: "true"
     DEBUG_OPENAI: "true"
@@ -345,12 +344,16 @@ redis:
 ##
 mongodb:
   ## Enable or disable MongoDB dependency completely.
-  enabled: false
+  enabled: true
+  architecture: replicaset
+  replicaCount: 2
+  fullnameOverride: librechat-mongodb
+  replicaCount: 2
 
   auth:
-    enabled: true
+    enabled: false
     rootPassword: blob-bla
-    replicaSetKey: replica-bla
+    replicaSetKey: replica-bla-librechat
     usernames:
       - librechat
     # passwords:
@@ -358,21 +361,21 @@ mongodb:
     databases:
       - librechat
 
-  service:
-    nameOverride: release-name-mongodb
-    type: ClusterIP
-    port: 27017
+  # service:
+  #   nameOverride: release-name-mongodb
+  #   type: ClusterIP
+  #   port: 27017
 
       # -- Service HTTP port
-  service:
-    # -- Kubernetes Service type
-    type: ClusterIP
-    port: 7700
-    # -- Additional annotations for service
-    annotations: {}
+  # service:
+  #   # -- Kubernetes Service type
+  #   type: ClusterIP
+  #   port: 7700
+  #   # -- Additional annotations for service
+  #   annotations: {}
 
-  container:
-    containerPort: 7700
+  # container:
+  #   containerPort: 7700
 
   
   # externalAccess:
@@ -386,14 +389,14 @@ mongodb:
   # rbac:
   #   create: true
 
-  architecture: standalone
-  replicaCount: 1
-  arbiter:
-    enabled: false
-    pdb:
-      minAvailable: 0
-  pdb:
-    minAvailable: 0
+  # architecture: standalone
+  # replicaCount: 1
+  # arbiter:
+  #   enabled: false
+  #   pdb:
+  #     minAvailable: 0
+  # pdb:
+  #   minAvailable: 0
 
     # key:
 
