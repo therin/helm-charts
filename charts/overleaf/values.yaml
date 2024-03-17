@@ -46,22 +46,22 @@ env:
   # see https://github.com/overleaf/overleaf/issues/695
   TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
   # Below is needed to fix ipv6 issues
-  SHARELATEX_EMAIL_SMTP_HOST: "0.0.0.0"
-  WEB_HOST: "0.0.0.0"
-  LISTEN_ADDRESS: "0.0.0.0"
-  WEB_API_HOST: "0.0.0.0"
-  DOCUPDATER_HOST: "0.0.0.0"
-  SPELLING_HOST: "0.0.0.0"
-  DOCSTORE_HOST: "0.0.0.0"
-  CHAT_HOST: "0.0.0.0"
-  FILESTORE_HOST: "0.0.0.0"
-  CLSI_HOST: "0.0.0.0"
-  PROJECT_HISTORY_HOST: "0.0.0.0"
-  REALTIME_HOST: "0.0.0.0"
-  CONTACTS_HOST: "0.0.0.0"
-  NOTIFICATIONS_HOST: "0.0.0.0"
-  WEBPACK_HOST: "0.0.0.0"
-  V1_HISTORY_HOST: "0.0.0.0"
+  # SHARELATEX_EMAIL_SMTP_HOST: "0.0.0.0"
+  # WEB_HOST: "0.0.0.0"
+  # LISTEN_ADDRESS: "0.0.0.0"
+  # WEB_API_HOST: "0.0.0.0"
+  # DOCUPDATER_HOST: "0.0.0.0"
+  # SPELLING_HOST: "0.0.0.0"
+  # DOCSTORE_HOST: "0.0.0.0"
+  # CHAT_HOST: "0.0.0.0"
+  # FILESTORE_HOST: "0.0.0.0"
+  # CLSI_HOST: "0.0.0.0"
+  # PROJECT_HISTORY_HOST: "0.0.0.0"
+  # REALTIME_HOST: "0.0.0.0"
+  # CONTACTS_HOST: "0.0.0.0"
+  # NOTIFICATIONS_HOST: "0.0.0.0"
+  # WEBPACK_HOST: "0.0.0.0"
+  # V1_HISTORY_HOST: "0.0.0.0"
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
@@ -117,8 +117,9 @@ mongodb:
     enabled: false
     replicaSetKey: replica-bla-overleaf
   persistence:
-    enabled: false
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 3Gi
     # storageClass: ""
-    # size: 8Gi
 
 nodeSelector: {kubernetes.io/hostname: k3d-main-server-0}
