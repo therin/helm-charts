@@ -9,9 +9,9 @@
 
 image:
   # -- image repository
-  repository: sharelatex/sharelatex
+  repository: ghcr.io/therin/overleaf
   # -- image tag
-  tag: "3.5.13"
+  tag: "latest"
   # -- image pull policy
   pullPolicy: IfNotPresent
 
@@ -41,6 +41,8 @@ env:
   # temporary fix for LuaLaTex compiles
   # see https://github.com/overleaf/overleaf/issues/695
   TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
+  # Below is needed to fix ipv6 issues
+  
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
 service:
