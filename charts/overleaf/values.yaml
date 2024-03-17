@@ -47,9 +47,9 @@ env:
   TEXMFVAR: /var/lib/sharelatex/tmp/texmf-var
   # Below is needed to fix ipv6 issues
   # SHARELATEX_EMAIL_SMTP_HOST: "0.0.0.0"
-  # WEB_HOST: "0.0.0.0"
-  # LISTEN_ADDRESS: "0.0.0.0"
-  # WEB_API_HOST: "0.0.0.0"
+  WEB_HOST: "0.0.0.0"
+  LISTEN_ADDRESS: "0.0.0.0"
+  WEB_API_HOST: "0.0.0.0"
   # DOCUPDATER_HOST: "0.0.0.0"
   # SPELLING_HOST: "0.0.0.0"
   # DOCSTORE_HOST: "0.0.0.0"
