@@ -13,7 +13,7 @@ image:
   # -- image tag
   tag: "latest"
   # -- image pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
 
 # Local kubernetes secret that holds creds for ghcr repo image
 imagePullSecrets:
