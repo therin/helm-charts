@@ -12,7 +12,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: "release-name-librechat"
+# fullnameOverride: "release-name-librechat"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -144,8 +144,8 @@ config:
     REFRESH_TOKEN_EXPIRY: "(1000 * 60 * 60 * 24) * 7"
     APP_TITLE: "Librechat"
     CUSTOM_FOOTER: "Cubiculum edition"
-    DEBUG_CONSOLE: "true"
-    DEBUG_LOGGING: "true"
+    DEBUG_CONSOLE: "TRUE"
+    DEBUG_LOGGING: "TRUE"
     DEBUG_OPENAI: "true"
     DEBUG_PLUGINS: "true"
     DOMAIN_CLIENT: ""
