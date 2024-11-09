@@ -12,7 +12,7 @@ service:
   main:
     ports:
       main:
-        port: 10010
+        port: 8080
         targetPort: 80
 persistence:
   config:
