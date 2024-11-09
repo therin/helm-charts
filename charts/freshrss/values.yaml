@@ -10,11 +10,15 @@ securityContext:
     runAsGroup: 0
 service:
   main:
+    service-lb:
+      enabled: true
+      primary: true
+      type: LoadBalancer
+      loadBalancerIP: 192.168.4.222
     ports:
       main:
-        port: 10010
+        port: 80
         targetPort: 80
-        nodePort: 30055
 persistence:
   config:
     enabled: true
