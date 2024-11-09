@@ -9,6 +9,15 @@ securityContext:
     runAsUser: 0
     runAsGroup: 0
 service:
+  service-nodeport:
+    enabled: true
+    type: NodePort
+    ports:
+      node-port-name:
+        enabled: true
+        port: 81
+        targetPort: 80
+        nodePort: 30080
   main:
     service-lb:
       enabled: true
