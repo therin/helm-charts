@@ -17,7 +17,7 @@ service:
         enabled: true
         port: 80
         targetPort: 80
-        nodePort: 30080
+        nodePort: 30088
   main:
     service-lb:
       enabled: true
