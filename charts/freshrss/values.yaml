@@ -21,7 +21,7 @@ service:
     type: NodePort
     ports:
       main:
-        nodePort: 44333
+        nodePort: 32766
         port: 80
         targetPort: 80
 persistence:
