@@ -10,7 +10,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - protocol: tcp
+    - protocol: TCP
       port: 7777
       targetPort: 8888
   selector:
