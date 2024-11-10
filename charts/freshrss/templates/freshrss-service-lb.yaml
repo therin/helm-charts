@@ -10,9 +10,9 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+    - protocol: tcp
+      port: http
+      targetPort: http
   selector:
     app.kubernetes.io/instance: freshrss
     
