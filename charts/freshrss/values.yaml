@@ -10,14 +10,15 @@ securityContext:
     runAsGroup: 0
 service:
   main:
+    type: LoadBalancer
+    allocateLoadBalancerNodePorts: true
+    ipFamilyPolicy: PreferDualStack
     ports:
       main:
         port: 80
         targetPort: 80
         protocol: tcp
         name: http
-        type: LoadBalancer
-        allocateLoadBalancerNodePorts: true
 persistence:
   config:
     enabled: true
