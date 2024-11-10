@@ -11,6 +11,8 @@ securityContext:
 service:
   main:
     type: LoadBalancer
+    allocateLoadBalancerNodePorts: true
+    ipFamilyPolicy: PreferDualStack
     ports:
       main:
         port: 80
