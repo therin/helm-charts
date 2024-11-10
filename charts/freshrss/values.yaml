@@ -9,26 +9,14 @@ securityContext:
     runAsUser: 0
     runAsGroup: 0
 service:
-  # nodeport:
-  #   enabled: true
-  #   type: NodePort
-  #   ports:
-  #     node-port-name:
-  #       enabled: true
-  #       port: 80
-  #       targetPort: 80
-  #       nodePort: 30088
   main:
-    service-lb:
-      enabled: true
-      primary: true
-      type: LoadBalancer
     ports:
       main:
         port: 8888
         targetPort: 80
         protocol: tcp
         name: http
+        type: LoadBalancer
 persistence:
   config:
     enabled: true
