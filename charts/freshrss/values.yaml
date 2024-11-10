@@ -15,10 +15,8 @@ service:
     ipFamilyPolicy: PreferDualStack
     ports:
       main:
-        port: 80
+        port: 10010
         targetPort: 80
-        protocol: tcp
-        name: http
 persistence:
   config:
     enabled: true
