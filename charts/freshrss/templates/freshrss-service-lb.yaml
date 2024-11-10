@@ -11,8 +11,8 @@ spec:
   type: LoadBalancer
   ports:
     - protocol: tcp
-      port: http
-      targetPort: http
+      port: 7777
+      targetPort: 8888
   selector:
     app.kubernetes.io/instance: freshrss
     
