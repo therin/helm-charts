@@ -2017,6 +2017,32 @@ entries:
     version: 1.0.0
   overleaf:
   - apiVersion: v2
+    appVersion: 2.7.4
+    created: "2024-11-22T02:04:47.371598128Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      version: 4.5.3
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 18.17.0
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 14.12.2
+    description: A web-based collaborative LaTeX editor
+    digest: af0cfb21e6eb377a9a256725b881cc2c3e2ede0c690099793211ec77a72609c3
+    keywords:
+    - overleaf
+    - sharelatex
+    name: overleaf
+    sources:
+    - https://github.com/overleaf/overleaf
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/overleaf-3.3.10/overleaf-3.3.10.tgz
+    version: 3.3.10
+  - apiVersion: v2
     appVersion: 2.7.3
     created: "2024-11-22T01:58:32.950563596Z"
     dependencies:
@@ -3386,4 +3412,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-11-22T01:58:32.95094542Z"
+generated: "2024-11-22T02:04:47.372024346Z"
