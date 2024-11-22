@@ -11,7 +11,8 @@ image:
   # -- image repository
   repository: ghcr.io/therin/overleaf
   # -- image tag
-  tag: "latest"
+  tag: "3b3bf20fee8c64f98086eacb81311ae6fa8319e9"
+  # tag: "latest"
   # -- image pull policy
   pullPolicy: Always
 
