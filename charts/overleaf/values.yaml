@@ -4,26 +4,17 @@
 # This chart inherits from our common library chart. You can check the default values/options here:
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
-
 # Example official overleaf docker compose: https://github.com/overleaf/overleaf/blob/old-master/docker-compose.yml
 
 image:
-  # -- image repository
   repository: ghcr.io/therin/overleaf
-  # -- image tag
-  tag: "3b3bf20fee8c64f98086eacb81311ae6fa8319e9"
+  tag: "cf7746c194a47261acca13afdca0f2b0baea821c"
   # tag: "latest"
-  # -- image pull policy
   pullPolicy: Always
 
 # Local kubernetes secret that holds creds for ghcr repo image
 imagePullSecrets:
   - name: regcred
-
-# podSecurityContext:
-#   sysctls:
-#   - name: net.ipv6.conf.all.disable_ipv6
-#     value: 1
 
 # -- environment variables. See more environment variables in the [overleaf documentation](https://github.com/overleaf/overleaf/wiki/Configuring-Overleaf).
 # @default -- See below
