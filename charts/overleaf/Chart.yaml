@@ -1,9 +1,9 @@
 ---
 apiVersion: v2
-appVersion: 2.7.6
+appVersion: 2.7.7
 description: A web-based collaborative LaTeX editor
 name: overleaf
-version: 3.3.12
+version: 3.3.13
 keywords:
   - overleaf
   - sharelatex

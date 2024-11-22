@@ -8,7 +8,7 @@
 
 image:
   repository: ghcr.io/therin/overleaf
-  tag: "cf7746c194a47261acca13afdca0f2b0baea821c"
+  tag: "4e257c5632b1da520df2359fc0b1200b015cce40"
   # tag: "latest"
   pullPolicy: Always
 
