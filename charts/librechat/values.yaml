@@ -8,7 +8,7 @@ image:
   repository: ghcr.io/danny-avila/librechat
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.7.5"
+  tag: "v0.7.6-rc1"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -156,6 +156,7 @@ config:
     MEILI_NO_ANALYTICS: "true"
     SEARCH: "true"
     MONGO_URI: "mongodb://librechat-mongodb-0.librechat-mongodb-headless.flux-system.svc.cluster.local:27017,librechat-mongodb-1.librechat-mongodb-headless.flux-system.svc.cluster.local:27017/LibreChat"
+    RAG_API_URL: "http://host.docker.internal:8000"
 
 meilisearch:
   enabled: true
