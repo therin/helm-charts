@@ -3332,6 +3332,17 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/re-notifier-1.0.0/re-notifier-1.0.0.tgz
     version: 1.0.0
+  rsshub:
+  - apiVersion: v2
+    appVersion: "2024-12-30"
+    created: "2024-12-21T22:41:51.894178671Z"
+    description: A Helm chart for Kubernetes
+    digest: f4e5260d26a7f76a890a68e57fff38064928e920a99a88b97d19ac0e535fc371
+    name: rsshub
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/rsshub-0.2.9/rsshub-0.2.9.tgz
+    version: 0.2.9
   sonarr:
   - apiVersion: v2
     appVersion: 1.0.11
@@ -3534,4 +3545,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-20T22:11:35.30279708Z"
+generated: "2024-12-21T22:41:51.895994225Z"
