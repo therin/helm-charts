@@ -91,7 +91,7 @@ persistence:
   size: "5Gi"
   storageClass: "-"
 
-nodeSelector: {kubernetes.io/hostname: k3s-agent-01}
+nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
 tolerations: []
 
@@ -162,7 +162,7 @@ config:
     MEILI_HTTP_ADDR: librechat-meilisearch:7700
     MEILI_NO_ANALYTICS: "true"
     SEARCH: "true"
-    MONGO_URI: "mongodb://librechat-mongodb-0.librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017,librechat-mongodb-1.librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017/LibreChat"
+    MONGO_URI: "mongodb://librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017,librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017/LibreChat"
     RAG_API_URL: "http://librechat-rag-api-librechat-rag-api.flux-system.svc.buran-kube.local:8000"
 
 meilisearch:
@@ -354,7 +354,6 @@ mongodb:
   architecture: replicaset
   replicaCount: 2
   fullnameOverride: librechat-mongodb
-  replicaCount: 2
 
   auth:
     enabled: false
