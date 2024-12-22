@@ -356,7 +356,7 @@ mongodb:
   fullnameOverride: librechat-mongodb
 
   auth:
-    enabled: false
+    enabled: true
     rootPassword: blob-bla
     replicaSetKey: replica-bla-librechat
     usernames:
