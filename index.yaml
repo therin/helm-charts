@@ -2062,6 +2062,21 @@ entries:
   librechat-rag-api:
   - apiVersion: v2
     appVersion: v0.3.0
+    created: "2024-12-22T05:38:20.580276328Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 15.5.38
+    description: A Helm chart for LibreChat
+    digest: a9201b3660a4dbbb28475334f6b7959cab7897aab4c0c370391e690c92e0b6ec
+    name: librechat-rag-api
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-rag-api-0.2.6/librechat-rag-api-0.2.6.tgz
+    version: 0.2.6
+  - apiVersion: v2
+    appVersion: v0.3.0
     created: "2024-12-22T05:29:19.54448045Z"
     dependencies:
     - condition: postgresql.enabled
@@ -3827,4 +3842,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-22T05:29:19.54489847Z"
+generated: "2024-12-22T05:38:20.580574555Z"
