@@ -59,7 +59,7 @@ spec:
                 name: {{ .Values.postgresql.auth.existingSecret }}
                 key: {{ .Values.postgresql.auth.existingSecretKey }}
           {{- end }}
-          {{- if .Values.librechat_misc.existingSecretName }}
+          {{- if .Values.librechat_misc.existingSecret }}
           - name: OPENAI_API_KEY
             valueFrom:
               secretKeyRef:

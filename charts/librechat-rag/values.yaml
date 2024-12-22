@@ -33,6 +33,7 @@ postgresql:
     password: password
     postgres-password: password
     replication-password: password
+    
     # define a secret with values for "postgres-password", "password" (user Password)  and "replication-password" or add values directly
     existingSecret: librechat-vectordb
     # postgres-password is needed to enable pgvector extension. If you enable it manually you can use "password" and user "librechat"
