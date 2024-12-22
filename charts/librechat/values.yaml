@@ -41,10 +41,17 @@ securityContext: {}
 networkPolicies:
   enabled: false
 
+# Value before migrating to buran
+# service:
+#   type: NodePort
+#   port: 3080
+#   nodePort: 30059
+
 service:
-  type: NodePort
+  type: LoadBalancer
   port: 3080
-  nodePort: 30059
+  # nodePort: 30059
+  targetPort: 3080
 
 ingress:
   enabled: false
@@ -155,8 +162,8 @@ config:
     MEILI_HTTP_ADDR: librechat-meilisearch:7700
     MEILI_NO_ANALYTICS: "true"
     SEARCH: "true"
-    MONGO_URI: "mongodb://librechat-mongodb-0.librechat-mongodb-headless.flux-system.svc.cluster.local:27017,librechat-mongodb-1.librechat-mongodb-headless.flux-system.svc.cluster.local:27017/LibreChat"
-    RAG_API_URL: "http://192.168.4.230:8000"
+    MONGO_URI: "mongodb://librechat-mongodb-0.librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017,librechat-mongodb-1.librechat-mongodb-headless.flux-system.svc.buran-kube.local:27017/LibreChat"
+    RAG_API_URL: "http://librechat-rag-api-librechat-rag-api.flux-system.svc.buran-kube.local:8000"
 
 meilisearch:
   enabled: true
