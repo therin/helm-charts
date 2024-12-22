@@ -80,12 +80,12 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-persistence:
-  enabled: true
-  existingClaim: ""
-  accessMode: ReadWriteOnce
-  size: "5Gi"
-  storageClass: "-"
+# persistence:
+#   enabled: true
+#   existingClaim: ""
+#   accessMode: ReadWriteOnce
+#   size: "5Gi"
+#   storageClass: "-"
 
 nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
@@ -93,30 +93,30 @@ tolerations: []
 
 affinity: {}
 
-# persistence:
-#   # -- Enable persistence using PVC
-#   enabled: false
-#   # -- PVC Access Mode
-#   accessMode: ReadWriteOnce
-#   ## Persistent Volume Storage Class
-#   ## If defined, storageClassName: <storageClass>
-#   ## If set to "-", storageClassName: "", which disables dynamic provisioning
-#   ## If undefined (the default) or set to null, no storageClassName spec is
-#   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-#   ##   GKE, AWS & OpenStack)
-#   ##
-#   # -- PVC Storage Class
-#   storageClass: "-"
+persistence:
+  # -- Enable persistence using PVC
+  enabled: false
+  # -- PVC Access Mode
+  accessMode: ReadWriteOnce
+  ## Persistent Volume Storage Class
+  ## If defined, storageClassName: <storageClass>
+  ## If set to "-", storageClassName: "", which disables dynamic provisioning
+  ## If undefined (the default) or set to null, no storageClassName spec is
+  ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+  ##   GKE, AWS & OpenStack)
+  ##
+  # -- PVC Storage Class
+  storageClass: "-"
 
-#   ## Data Persistent Volume existing claim name
-#   ## Requires persistence.enabled: true
-#   ## If defined, PVC must be created manually before volume will be bound
-#   # -- Existing PVC
-#   existingClaim: ""
-#   # -- PVC Storage Request
-#   size: Gi
-#   # -- Additional annotations for PVC
-#   annotations: {}
+  ## Data Persistent Volume existing claim name
+  ## Requires persistence.enabled: true
+  ## If defined, PVC must be created manually before volume will be bound
+  # -- Existing PVC
+  existingClaim: ""
+  # -- PVC Storage Request
+  size: Gi
+  # -- Additional annotations for PVC
+  annotations: {}
   
 config:
   file:
