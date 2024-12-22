@@ -360,6 +360,7 @@ mongodb:
       - librechat
     # passwords:
     password: sg9BlnfzGND2D7SL
+    # passwords: sg9BlnfzGND2D7SL
     databases:
       - librechat
 
