@@ -91,7 +91,7 @@ persistence:
   size: "5Gi"
   storageClass: "-"
 
-nodeSelector: {kubernetes.io/hostname: k3d-main-server-0}
+nodeSelector: {kubernetes.io/hostname: k3s-agent-01}
 
 tolerations: []
 
