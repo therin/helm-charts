@@ -30,6 +30,7 @@ jobs:
           helm pull oci://registry-1.docker.io/bitnamicharts/redis
           helm pull oci://registry-1.docker.io/bitnamicharts/mongodb
           helm repo add meilisearch https://meilisearch.github.io/meilisearch-kubernetes
+          helm repo add common https://bjw-s.github.io/helm-charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.5.0
