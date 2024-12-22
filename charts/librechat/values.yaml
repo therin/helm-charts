@@ -156,7 +156,7 @@ config:
     MEILI_NO_ANALYTICS: "true"
     SEARCH: "true"
     MONGO_URI: "mongodb://librechat-mongodb-0.librechat-mongodb-headless.flux-system.svc.cluster.local:27017,librechat-mongodb-1.librechat-mongodb-headless.flux-system.svc.cluster.local:27017/LibreChat"
-    RAG_API_URL: "http://host.docker.internal:8000"
+    RAG_API_URL: "http://192.168.4.230:8000"
 
 meilisearch:
   enabled: true
