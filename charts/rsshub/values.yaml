@@ -70,8 +70,13 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
-  port: 80
+    type: LoadBalancer
+    allocateLoadBalancerNodePorts: true
+    ipFamilyPolicy: PreferDualStack
+    ports:
+      main:
+        port: 80
+        targetPort: 80
 
 ingress:
   enabled: false
