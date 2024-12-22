@@ -5,5 +5,5 @@ metadata:
 data:
   POSTGRES_DB: {{ .Values.postgresql.auth.database }}
   POSTGRES_USER: {{ .Values.postgresql.auth.username }}
-  DB_HOST: librechat-rag-api-postgresql.flux-system.svc.buran-kube.local
+  DB_HOST: {{ .Values.postgresql.auth.dbhost }}
   {{- toYaml .Values.rag.configEnv | nindent 2 }} 
