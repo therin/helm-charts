@@ -354,7 +354,7 @@ mongodb:
   nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
   auth:
-    enabled: true
+    enabled: false
     rootPassword: blob-bla
     replicaSetKey: replica-bla-librechat
     usernames:
