@@ -3335,6 +3335,16 @@ entries:
   rsshub:
   - apiVersion: v2
     appVersion: "2024-02-02"
+    created: "2024-12-22T01:55:39.861899817Z"
+    description: A Helm chart for Kubernetes
+    digest: 335872999f9ce530a41b80db8a720dc9a07a9485e657fd7fe304ab005c427a34
+    name: rsshub
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/rsshub-0.3.5/rsshub-0.3.5.tgz
+    version: 0.3.5
+  - apiVersion: v2
+    appVersion: "2024-02-02"
     created: "2024-12-22T01:50:41.344360764Z"
     description: A Helm chart for Kubernetes
     digest: 118870fd2654a2f03a4d5873ce3dcdeb91f0599e3238746f47dca9a63fbcd9d5
@@ -3595,4 +3605,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-22T01:50:41.344790414Z"
+generated: "2024-12-22T01:55:39.862396708Z"
