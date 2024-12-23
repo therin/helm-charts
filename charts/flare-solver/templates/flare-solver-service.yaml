@@ -6,7 +6,7 @@ metadata:
   labels:
     app: flare-solver
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: flare-solver
   ports:
@@ -14,4 +14,3 @@ spec:
       port: 8191
       targetPort: 8191
       protocol: TCP
-      nodePort: 30057

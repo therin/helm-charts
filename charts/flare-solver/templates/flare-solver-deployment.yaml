@@ -33,4 +33,4 @@ spec:
           persistentVolumeClaim:
             claimName: flare-solver-config
       nodeSelector:
-        kubernetes.io/hostname: k3d-main-server-0
+        kubernetes.io/hostname: k3s-agent-02
