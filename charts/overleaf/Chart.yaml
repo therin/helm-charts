@@ -12,6 +12,7 @@ sources:
 dependencies:
   - name: common
     repository: "file://../common"
+    version: 4.5.4
   - name: redis
     version: 20.6.1
     repository: oci://registry-1.docker.io/bitnamicharts
