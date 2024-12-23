@@ -129,7 +129,7 @@ config:
   # Set the contents of librechat.yaml in this file
   # configYamlContent: ""
   configYamlContent: |
-    version: 1.0.8
+    version: 1.2.0
     speech:
       stt:
         openai:
