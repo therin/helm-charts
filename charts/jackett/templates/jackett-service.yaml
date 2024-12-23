@@ -6,7 +6,7 @@ metadata:
   labels:
     app: jackett
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: jackett
   ports:
@@ -14,4 +14,3 @@ spec:
       port: 9117
       targetPort: 9117
       protocol: TCP
-      nodePort: 30054
