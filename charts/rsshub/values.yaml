@@ -228,57 +228,6 @@ redis:
     # -- Additional redis service labels
     labels: {}
 
-  metrics:
-    # -- Deploy metrics service and redis-exporter sidecar
-    enabled: false
-    image:
-      # -- redis-exporter image repository
-      repository: quay.io/bitnami/redis-exporter
-      # -- redis-exporter image tag
-      tag: 1.26.0-debian-10-r2
-      # -- redis-exporter image PullPolicy
-      imagePullPolicy: IfNotPresent
-    # -- Port to use for redis-exporter sidecar
-    containerPort: 9121
-    # -- Resource limits and requests for redis-exporter sidecar
-    resources: {}
-      # limits:
-      #   cpu: 50m
-      #   memory: 64Mi
-      # requests:
-    #   cpu: 10m
-    #   memory: 32Mi
-    service:
-      # -- Metrics service type
-      type: ClusterIP
-      # -- Metrics service clusterIP. `None` makes a "headless service" (no virtual IP)
-      clusterIP: None
-      # -- Metrics service annotations
-      annotations: {}
-      # -- Metrics service labels
-      labels: {}
-      # -- Metrics service port
-      servicePort: 9121
-      # -- Metrics service port name
-      portName: http-metrics
-    serviceMonitor:
-      # -- Enable a prometheus ServiceMonitor
-      enabled: false
-      # -- Interval at which metrics should be scraped
-      interval: 30s
-      # -- Prometheus [RelabelConfigs] to apply to samples before scraping
-      relabelings: []
-      # -- Prometheus [MetricRelabelConfigs] to apply to samples before ingestion
-      metricRelabelings: []
-      # -- Prometheus ServiceMonitor selector
-      selector: {}
-      # prometheus: kube-prometheus
-
-      # -- Prometheus ServiceMonitor namespace
-      namespace: "" # "monitoring"
-      # -- Prometheus ServiceMonitor labels
-      additionalLabels: {}
-
 puppeteer:
   enabled: true
   name: puppeteer
