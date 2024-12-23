@@ -302,7 +302,7 @@ meilisearch:
   containers: []
 
   # -- Node labels for pod assignment
-  nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
+  # nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
   # -- Tolerations for pod assignment
   tolerations: []
@@ -352,6 +352,10 @@ mongodb:
   clusterDomain: buran-kube.local
   # fullnameOverride: librechat-mongodb
   # nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
+
+  extraEnvVars:
+    - name: LOG_LEVEL
+      value: debug
 
   auth:
     enabled: false
