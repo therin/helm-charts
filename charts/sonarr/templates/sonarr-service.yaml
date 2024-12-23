@@ -6,7 +6,7 @@ metadata:
   labels:
     app: sonarr
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: sonarr
   ports:
@@ -14,4 +14,3 @@ spec:
       port: 8989
       targetPort: 8989
       protocol: TCP
-      nodePort: 30053
