@@ -121,21 +121,25 @@ persistence:
 config:
   file:
     # Use librechat.yaml config file
-    enabled: false
-    # configMapKeyRef:
-    #   name: librechat-config
-    #   key: librechat.yaml
+    enabled: true
+    configMapKeyRef:
+      name: librechat-config
+      key: librechat.yaml
 
-  speech:
-    stt:
-      openai:
-        apiKey: '${STT_API_KEY}'
-        model: 'whisper-1'
-    tts:
-      openai:
-        apiKey: '${STT_API_KEY}'
-        model: 'tts-1'
-        voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
+  # Set the contents of librechat.yaml in this file
+  # configYamlContent: ""
+  configYamlContent: |
+    version: 1.0.8
+    speech:
+      stt:
+        openai:
+          apiKey: '${STT_API_KEY}'
+          model: 'whisper-1'
+      tts:
+        openai:
+          apiKey: '${STT_API_KEY}'
+          model: 'tts-1'
+          voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
 
   envSecrets:
     # Use this when using one k8s secret for multiply env secrets
@@ -178,7 +182,7 @@ meilisearch:
     # -- Meilisearch image name
     repository: getmeili/meilisearch
     # -- Meilisearch image tag
-    tag: v1.6.2
+    tag: v1.7.0
     # -- Meilisearch image pull policy
     pullPolicy: IfNotPresent
     # -- Secret to authenticate against the docker registry
