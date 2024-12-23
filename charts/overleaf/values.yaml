@@ -108,7 +108,7 @@ mongodb:
   architecture: replicaset
   replicaCount: 2
   clusterDomain: buran-kube.local
-  fullnameOverride: overleaf-mongodb
+  # fullnameOverride: overleaf-mongodb
   auth:
     enabled: false
     replicaSetKey: replica-bla-overleaf
