@@ -940,6 +940,16 @@ entries:
   jackett:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2024-12-23T03:13:33.201162353Z"
+    description: A Helm chart for jackett
+    digest: 155356a8238ed848dc3cef285660bcb79972fc750eefafea8e289e60205db40e
+    name: jackett
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/jackett-1.0.2/jackett-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2024-01-29T05:41:34.893127049Z"
     description: A Helm chart for jackett
     digest: ccb73eb307f6ce358db75960757b9ae24d57462baea0d5492a117c7c1298163e
@@ -4241,4 +4251,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-23T02:26:32.295943859Z"
+generated: "2024-12-23T03:13:33.201451224Z"
