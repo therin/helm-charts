@@ -18,6 +18,16 @@ entries:
   flare-solver:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2024-12-23T03:36:37.518661398Z"
+    description: A Helm chart for flare-solver
+    digest: c7a2fc6ab310221b64b0a1d88e8e30f6aab7077850d8ec88d6e9e2e9611c2203
+    name: flare-solver
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/flare-solver-1.0.2/flare-solver-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2024-01-29T05:55:24.928253452Z"
     description: A Helm chart for flare-solver
     digest: 47a167aea084980d0e5db377e0f73ba293e55bb260b047282d6b810723d842e4
@@ -4251,4 +4261,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-23T03:13:33.201451224Z"
+generated: "2024-12-23T03:36:37.518947559Z"
