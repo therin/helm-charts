@@ -94,7 +94,8 @@ persistence:
 # @default -- See values.yaml
 redis:
   enabled: true
-  fullnameOverride: overleaf-redis
+  # fullnameOverride: overleaf-redis
+  clusterDomain: buran-kube.local
   replica:
     replicaCount: 1
   auth:
