@@ -1,0 +1,46 @@
+{
+    "extends": ["config:base"],
+    "docker": {
+      "enable": true,
+      "fileMatch": ["(^|\\/)Dockerfile", "\\.yaml$"],
+      "versioning": "docker"
+    },
+    "packageRules": [
+      {
+        "##Description": "Handle Docker images from any registry",
+        "matchDatasources": ["docker"],
+        "managers": ["docker-compose", "helm-values", "yaml"],
+        "updateTypes": ["minor", "patch"],
+        "semanticCommits": "enabled",
+        "commitMessageAction": "update",
+        "commitMessageTopic": "Docker image"
+      },
+      {
+        "description": "Update Helm chart version with any Docker image updates",
+        "fileMatch": ["Chart.yaml"],
+        "matchPackagePatterns": ["^.*$"],
+        "postUpdateOptions": ["bumpVersion"],
+        "semanticCommits": "enabled"
+      }
+    ],
+    "regexManagers": [
+      {
+        "description": "Generic Docker image version matching in YAML files",
+        "fileMatch": ["(^|/)[^/]+\\.yaml$"],
+        "matchStrings": [
+          "image:\\s+(?<depName>\\S+):(?<currentValue>[\\d\\.]+)"
+        ],
+        "datasourceTemplate": "docker",
+        "versioningTemplate": "docker"
+      },
+      {
+        "description": "Helm chart version bumping",
+        "fileMatch": ["Chart.yaml"],
+        "matchStrings": [
+          "version:\\s+(?<currentValue>[\\d\\.]+)"
+        ],
+        "datasourceTemplate": "docker",
+        "versioningTemplate": "helm"
+      }
+    ]
+  }
