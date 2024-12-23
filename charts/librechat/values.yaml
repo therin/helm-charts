@@ -126,6 +126,17 @@ config:
     #   name: librechat-config
     #   key: librechat.yaml
 
+  speech:
+    stt:
+      openai:
+        apiKey: '${STT_API_KEY}'
+        model: 'whisper-1'
+    tts:
+      openai:
+        apiKey: '${STT_API_KEY}'
+        model: 'tts-1'
+        voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
+
   envSecrets:
     # Use this when using one k8s secret for multiply env secrets
     secretRef: librechat
