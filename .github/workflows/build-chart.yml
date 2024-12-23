@@ -34,6 +34,6 @@ jobs:
           helm repo add common https://bjw-s.github.io/helm-charts
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.5.0
+        uses: helm/chart-releaser-action@v1.6.0
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
