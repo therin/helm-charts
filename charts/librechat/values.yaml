@@ -155,7 +155,7 @@ config:
     # Full list of possible values
     # https://github.com/danny-avila/LibreChat/blob/main/.env.example
     ALLOW_EMAIL_LOGIN: "true"
-    ALLOW_REGISTRATION: "false"
+    ALLOW_REGISTRATION: "true"
     ALLOW_SOCIAL_LOGIN: "false"
     ALLOW_SOCIAL_REGISTRATION: "false"
     SESSION_EXPIRY: "1000 * 60 * 600" # 10 hours session expiry
