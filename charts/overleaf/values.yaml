@@ -106,8 +106,8 @@ redis:
 # @default -- See values.yaml
 mongodb:
   enabled: true
-  architecture: replicaset
-  replicaCount: 2
+  architecture: standalone
+  # replicaCount: 1
   clusterDomain: buran-kube.local
   # fullnameOverride: overleaf-mongodb
   auth:
