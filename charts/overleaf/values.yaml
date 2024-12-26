@@ -121,7 +121,5 @@ mongodb:
   extraEnvVars:
     - name: LOG_LEVEL
       value: debug
-    - name: BITNAMI_DEBUG
-      value: true
 
 nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
