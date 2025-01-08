@@ -127,7 +127,7 @@ redis:
     # -- Redis repository
     repository: redis
     # -- Redis tag
-    tag: 7.4.1-alpine
+    tag: 7.4.2-alpine
     # -- Redis imagePullPolicy
     imagePullPolicy: IfNotPresent
 
