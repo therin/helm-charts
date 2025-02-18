@@ -40,6 +40,11 @@ postgresql:
     # postgres-password is needed to enable pgvector extension. If you enable it manually you can use "password" and user "librechat"
     existingSecretKey: postgres-password
 
+# Global configuration parameters, see https://github.com/bitnami/charts/issues/30850
+global:
+  security:
+    allowInsecureImages: true
+
 imagePullSecrets: []
 nameOverride: ''
 fullnameOverride: ''
