@@ -2,6 +2,20 @@ apiVersion: v1
 entries:
   common:
   - apiVersion: v2
+    created: "2025-02-18T00:41:13.932800992Z"
+    description: Function library for k8s-at-home charts
+    digest: 6dff2b43229d71a5f2eb3119ea79c8d1d4b5a18ffea433a582d6c841827aa423
+    home: https://github.com/k8s-at-home/library-charts/tree/main/stable/common
+    keywords:
+    - k8s-at-home
+    - common
+    kubeVersion: '>=1.16.0-0'
+    name: common
+    type: library
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/common-4.5.4/common-4.5.4.tgz
+    version: 4.5.4
+  - apiVersion: v2
     created: "2024-03-15T02:17:50.054255109Z"
     description: Function library for k8s-at-home charts
     digest: 0f86487a823717c14aafefe6e158ee81a81cbdfab306856451bc97002fb95025
@@ -37,6 +51,41 @@ entries:
     - https://github.com/therin/helm-charts/releases/download/flare-solver-1.0.1/flare-solver-1.0.1.tgz
     version: 1.0.1
   freshrss:
+  - annotations:
+      max_scale_version: 24.04.1
+      min_scale_version: 24.04.0
+      truecharts.org/category: media
+      truecharts.org/max_helm_version: "3.15"
+      truecharts.org/min_helm_version: "3.11"
+      truecharts.org/train: stable
+    apiVersion: v2
+    appVersion: 1.24.5
+    created: "2025-02-18T00:41:14.036293817Z"
+    dependencies:
+    - name: common
+      repository: oci://tccr.io/truecharts
+      version: 25.6.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 5df84b4a82afc5ceb26325ef343ad9f6e79970ea7ccff47a4f6709210f73b108
+    home: https://truecharts.org/charts/stable/freshrss
+    icon: https://truecharts.org/img/hotlink-ok/chart-icons/freshrss.webp
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.24.0-0'
+    maintainers:
+    - email: info@truecharts.org
+      name: TrueCharts
+      url: https://truecharts.org
+    name: freshrss
+    sources:
+    - https://ghcr.io/linuxserver/freshrss
+    - https://github.com/FreshRSS/FreshRSS
+    - https://github.com/truecharts/charts/tree/master/charts/stable/freshrss
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/freshrss-20.2.32/freshrss-20.2.32.tgz
+    version: 20.2.32
   - annotations:
       max_scale_version: 24.04.1
       min_scale_version: 24.04.0
@@ -2711,6 +2760,21 @@ entries:
   librechat-rag-api:
   - apiVersion: v2
     appVersion: v0.3.0
+    created: "2025-02-18T00:41:14.251567954Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.9
+    description: A Helm chart for LibreChat
+    digest: cc34ab38c90c2bb7d677d21c532c90b0ae4c7beb5ebb7acc9973a72c37fd127b
+    name: librechat-rag-api
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-rag-api-0.2.8/librechat-rag-api-0.2.8.tgz
+    version: 0.2.8
+  - apiVersion: v2
+    appVersion: v0.3.0
     created: "2024-12-22T05:39:44.386859206Z"
     dependencies:
     - condition: postgresql.enabled
@@ -2800,6 +2864,32 @@ entries:
     - https://github.com/therin/helm-charts/releases/download/librechat-rag-api-0.2.2/librechat-rag-api-0.2.2.tgz
     version: 0.2.2
   overleaf:
+  - apiVersion: v2
+    appVersion: 2.8.0
+    created: "2025-02-18T00:41:14.365413278Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      version: 4.5.4
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.7.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.4.3
+    description: A web-based collaborative LaTeX editor
+    digest: 2fb8e2d6df7982ca19af352c08f0ca5c4c21e2ef38c52dc16179445b8ba438c9
+    keywords:
+    - overleaf
+    - sharelatex
+    name: overleaf
+    sources:
+    - https://github.com/overleaf/overleaf
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/overleaf-3.3.21/overleaf-3.3.21.tgz
+    version: 3.3.21
   - apiVersion: v2
     appVersion: 2.7.9
     created: "2024-12-26T01:50:44.795099261Z"
@@ -4250,6 +4340,38 @@ entries:
           url: https://github.com/gabe565/charts/tree/main/charts/rss-bridge
     apiVersion: v2
     appVersion: latest
+    created: "2025-02-18T00:41:14.463976719Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.7.1
+    description: The RSS feed for websites missing it.
+    digest: 30da2891bb4b984b4dc11d198ed37317b70e672fd65e2b339a3ba9ca8f28a957
+    home: https://charts.gabe565.com/charts/rss-bridge/
+    icon: https://raw.githubusercontent.com/RSS-Bridge/rss-bridge/987f42d/static/favicon.png
+    keywords:
+    - rss-bridge
+    - rss
+    - feed
+    kubeVersion: '>=1.22.0-0'
+    name: rss-bridge
+    sources:
+    - https://github.com/RSS-Bridge/rss-bridge
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/rss-bridge-0.5.7/rss-bridge-0.5.7.tgz
+    version: 0.5.7
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Pin bjw-s common chart links to v1
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/RSS-Bridge/rss-bridge
+        - name: Chart Source
+          url: https://github.com/gabe565/charts/tree/main/charts/rss-bridge
+    apiVersion: v2
+    appVersion: latest
     created: "2024-12-22T03:39:10.251658845Z"
     dependencies:
     - name: common
@@ -4400,6 +4522,16 @@ entries:
     - https://github.com/therin/helm-charts/releases/download/rss-bridge-0.5.2/rss-bridge-0.5.2.tgz
     version: 0.5.2
   rsshub:
+  - apiVersion: v2
+    appVersion: "2024-02-02"
+    created: "2025-02-18T00:41:14.542391803Z"
+    description: A Helm chart for Kubernetes
+    digest: 526f8c901c8a0898d75bc9a1a28555687883aad29feaf0a6f949917172ddba3a
+    name: rsshub
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/rsshub-0.3.7/rsshub-0.3.7.tgz
+    version: 0.3.7
   - apiVersion: v2
     appVersion: "2024-02-02"
     created: "2024-12-22T01:55:39.861899817Z"
@@ -4682,4 +4814,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2024-12-26T01:50:44.796374704Z"
+generated: "2025-02-18T00:41:14.543488336Z"
