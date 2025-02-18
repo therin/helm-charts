@@ -15,9 +15,16 @@ image:
 
 controllers:
   main:
-    enabled: false
-    type: deployment
+    # Enable the controller
+    enabled: true
+    type: deployment  # Ensure this type is correctly specified
     replicas: 1
+    strategy: RollingUpdate
+    # Any additional configuration specific to the controller
+    pod: 
+      # For instance, you could specify pod-level attributes here
+      labels: 
+        tier: backend
 
 # controller:
 #   # -- Set the controller upgrade strategy
@@ -39,7 +46,7 @@ env: {}
 service:
   main:
     type: LoadBalancer
-    # controller: main
+    controller: main
     allocateLoadBalancerNodePorts: true
     ipFamilyPolicy: PreferDualStack
     ports:
