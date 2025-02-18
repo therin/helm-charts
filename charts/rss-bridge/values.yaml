@@ -31,6 +31,7 @@ env: {}
 service:
   main:
     type: LoadBalancer
+    controller: true
     allocateLoadBalancerNodePorts: true
     ipFamilyPolicy: PreferDualStack
     ports:
