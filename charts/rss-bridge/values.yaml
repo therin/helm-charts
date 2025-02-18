@@ -13,6 +13,10 @@ image:
   # -- image tag
   tag: latest
 
+controllers:
+  enabled: true
+  name: "rss-bridge-controller"
+
 controller:
   # -- Set the controller upgrade strategy
   name: "rss-bridge-controller"
@@ -33,7 +37,7 @@ env: {}
 service:
   main:
     type: LoadBalancer
-    # controller: "rss-bridge-controller"
+    controller: "rss-bridge-controller"
     allocateLoadBalancerNodePorts: true
     ipFamilyPolicy: PreferDualStack
     ports:
