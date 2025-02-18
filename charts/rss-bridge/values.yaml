@@ -59,7 +59,7 @@ persistence:
     enabled: true
     retain: true
     # storageClass: ""
-    # accessMode: ReadWriteOnce
+    accessMode: ReadWriteOnce
     # size: 1Gi
   cache:
     enabled: false
