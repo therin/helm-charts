@@ -23,12 +23,12 @@ controllers:
       labels: 
         tier: backend
 
-    # Linking the global image settings to the containers
-    defaultContainerOptions:
-      image:
-        repository: ghcr.io/rss-bridge/rss-bridge
-        tag: latest
-        pullPolicy: Always
+    containers:
+      main:
+        image:
+          repository: ghcr.io/rss-bridge/rss-bridge
+          tag: latest
+          pullPolicy: Always
 
 # controller:
 #   # -- Set the controller upgrade strategy
