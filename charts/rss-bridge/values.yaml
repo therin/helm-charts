@@ -16,6 +16,7 @@ image:
 controller:
   # -- Set the controller upgrade strategy
   name: "rss-bridge-controller"
+  enabled: true
   strategy: RollingUpdate
 
 # -- environment variables.
