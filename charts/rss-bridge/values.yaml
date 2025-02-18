@@ -60,7 +60,7 @@ persistence:
     retain: true
     # storageClass: ""
     accessMode: ReadWriteOnce
-    # size: 1Gi
+    size: 1Gi
   cache:
     enabled: false
     type: emptyDir
