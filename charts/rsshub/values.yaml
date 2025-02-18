@@ -123,6 +123,10 @@ redis:
   # -- Redis name
   name: redis
 
+  metrics:
+    serviceMonitor:
+      enabled: false
+
   image:
     # -- Redis repository
     repository: redis
