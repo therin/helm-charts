@@ -15,6 +15,7 @@ image:
 
 controller:
   # -- Set the controller upgrade strategy
+  name: "rss-bridge-controller"
   strategy: RollingUpdate
 
 # -- environment variables.
@@ -31,7 +32,7 @@ env: {}
 service:
   main:
     type: LoadBalancer
-    controller: true
+    controller: "rss-bridge-controller"
     allocateLoadBalancerNodePorts: true
     ipFamilyPolicy: PreferDualStack
     ports:
