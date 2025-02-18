@@ -15,16 +15,20 @@ image:
 
 controllers:
   main:
-    # Enable the controller
     enabled: true
-    type: deployment  # Ensure this type is correctly specified
+    type: deployment
     replicas: 1
     strategy: RollingUpdate
-    # Any additional configuration specific to the controller
     pod: 
-      # For instance, you could specify pod-level attributes here
       labels: 
         tier: backend
+
+    # Linking the global image settings to the containers
+    defaultContainerOptions:
+      image:
+        repository: ghcr.io/rss-bridge/rss-bridge
+        tag: latest
+        pullPolicy: Always
 
 # controller:
 #   # -- Set the controller upgrade strategy
