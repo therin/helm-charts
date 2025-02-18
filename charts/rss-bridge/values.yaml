@@ -14,14 +14,15 @@ image:
   tag: latest
 
 controllers:
-  enabled: true
-  name: "rss-bridge-controller"
+  main:
+    enabled: true
+    type: deployment
 
-controller:
-  # -- Set the controller upgrade strategy
-  name: "rss-bridge-controller"
-  enabled: false
-  strategy: RollingUpdate
+# controller:
+#   # -- Set the controller upgrade strategy
+#   name: "rss-bridge-controller"
+#   enabled: false
+#   strategy: RollingUpdate
 
 # -- environment variables.
 # @default -- See [values.yaml](./values.yaml)
@@ -37,7 +38,7 @@ env: {}
 service:
   main:
     type: LoadBalancer
-    controller: "rss-bridge-controller"
+    controller: main
     allocateLoadBalancerNodePorts: true
     ipFamilyPolicy: PreferDualStack
     ports:
