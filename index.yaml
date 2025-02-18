@@ -4377,6 +4377,38 @@ entries:
           url: https://github.com/gabe565/charts/tree/main/charts/rss-bridge
     apiVersion: v2
     appVersion: latest
+    created: "2025-02-18T03:15:14.132310885Z"
+    dependencies:
+    - name: common
+      repository: https://bjw-s.github.io/helm-charts
+      version: 3.7.1
+    description: The RSS feed for websites missing it.
+    digest: 595bb32ea3a5b349b34485d50ff508ef89b24fa876783f1fb54a04a6a018e761
+    home: https://charts.gabe565.com/charts/rss-bridge/
+    icon: https://raw.githubusercontent.com/RSS-Bridge/rss-bridge/987f42d/static/favicon.png
+    keywords:
+    - rss-bridge
+    - rss
+    - feed
+    kubeVersion: '>=1.22.0-0'
+    name: rss-bridge
+    sources:
+    - https://github.com/RSS-Bridge/rss-bridge
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/rss-bridge-0.6.9/rss-bridge-0.6.9.tgz
+    version: 0.6.9
+  - annotations:
+      artifacthub.io/changes: |-
+        - kind: changed
+          description: Pin bjw-s common chart links to v1
+      artifacthub.io/links: |-
+        - name: App Source
+          url: https://github.com/RSS-Bridge/rss-bridge
+        - name: Chart Source
+          url: https://github.com/gabe565/charts/tree/main/charts/rss-bridge
+    apiVersion: v2
+    appVersion: latest
     created: "2025-02-18T03:09:14.580671474Z"
     dependencies:
     - name: common
@@ -5213,4 +5245,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2025-02-18T03:09:14.581239132Z"
+generated: "2025-02-18T03:15:14.132810241Z"
