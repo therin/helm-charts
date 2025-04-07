@@ -1,6 +1,6 @@
 dependencies:
 - name: common
   repository: oci://tccr.io/truecharts
-  version: 26.2.0
-digest: sha256:eb9324f3ac6254b70d4926cd9cc98ae8829df9403b538ae72658237769c46325
-generated: "2025-02-18T01:25:59.45029612Z"
+  version: 27.1.4
+digest: sha256:495ca4da79ec674a6fd13b91b7d1793419fafb23f369987c950211d8473a5cc9
+generated: "2025-04-07T13:05:33.346333382Z"

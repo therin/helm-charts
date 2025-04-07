@@ -9,7 +9,7 @@ apiVersion: v2
 appVersion: 1.24.6
 dependencies:
   - name: common
-    version: 26.2.0
+    version: 27.1.4
     repository: oci://tccr.io/truecharts
     condition: ""
     alias: ""
