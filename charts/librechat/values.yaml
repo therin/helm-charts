@@ -101,7 +101,7 @@ persistence:
   # -- Existing PVC
   existingClaim: ""
   # -- PVC Storage Request
-  size: Gi
+  size: 1Gi
   # -- Additional annotations for PVC
   annotations: {}
   
