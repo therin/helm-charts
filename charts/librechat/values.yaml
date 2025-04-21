@@ -93,7 +93,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # -- PVC Storage Class
-  storageClass: "-"
+  storageClass: "local-path"
 
   ## Data Persistent Volume existing claim name
   ## Requires persistence.enabled: true
