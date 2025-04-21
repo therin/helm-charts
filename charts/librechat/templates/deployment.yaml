@@ -73,6 +73,8 @@ spec:
             name: librechat-config
             subPath: {{ .Values.config.file.configMapKeyRef.key }}
           {{- end }}
+          - name: images
+            mountPath: /app/client/public/images
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -90,4 +92,7 @@ spec:
         - configMap:
             name: {{ .Values.config.file.configMapKeyRef.name }}
           name: librechat-config
+        - name: images
+          persistentVolumeClaim:
+            claimName: librechat-pvc
       {{- end }}
