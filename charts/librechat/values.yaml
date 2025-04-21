@@ -37,16 +37,9 @@ securityContext: {}
 networkPolicies:
   enabled: false
 
-# Value before migrating to buran
-# service:
-#   type: NodePort
-#   port: 3080
-#   nodePort: 30059
-
 service:
   type: LoadBalancer
   port: 3080
-  # nodePort: 30059
   targetPort: 3080
 
 ingress:
@@ -80,12 +73,6 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# persistence:
-#   enabled: true
-#   existingClaim: ""
-#   accessMode: ReadWriteOnce
-#   size: "5Gi"
-#   storageClass: "-"
 
 nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
@@ -95,7 +82,7 @@ affinity: {}
 
 persistence:
   # -- Enable persistence using PVC
-  enabled: false
+  enabled: true
   # -- PVC Access Mode
   accessMode: ReadWriteOnce
   ## Persistent Volume Storage Class
