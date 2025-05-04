@@ -21,12 +21,6 @@ The RSS feed for websites missing it.
 
 Kubernetes: `>=1.22.0-0`
 
-## Dependencies
-
-| Repository | Name | Version |
-|------------|------|---------|
-| <https://bjw-s.github.io/helm-charts> | common | 1.5.1 |
-
 ## Installing the Chart
 
 To install the chart with the release name `rss-bridge`

@@ -4,7 +4,7 @@ description: The RSS feed for websites missing it.
 home: https://charts.gabe565.com/charts/rss-bridge/
 icon: https://raw.githubusercontent.com/RSS-Bridge/rss-bridge/987f42d/static/favicon.png
 type: application
-version: 0.6.9
+version: 0.7.0
 # renovate datasource=docker depName=ghcr.io/rss-bridge/rss-bridge
 appVersion: latest
 kubeVersion: ">=1.22.0-0"
@@ -14,8 +14,7 @@ keywords:
   - feed
 dependencies:
   - name: common
-    repository: https://bjw-s.github.io/helm-charts
-    version: 3.7.1
+    repository: https://bjw-s-labs.github.io/helm-charts
 sources:
   - https://github.com/RSS-Bridge/rss-bridge
 annotations:
