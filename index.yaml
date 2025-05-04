@@ -59,6 +59,41 @@ entries:
       truecharts.org/min_helm_version: "3.11"
       truecharts.org/train: stable
     apiVersion: v2
+    appVersion: 1.24.9
+    created: "2025-05-04T01:37:55.298127456Z"
+    dependencies:
+    - name: common
+      repository: oci://tccr.io/truecharts
+      version: 26.2.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 8433b87595a8a24a1699deed203080c24796699605bea6c463c42970453e6149
+    home: https://truecharts.org/charts/stable/freshrss
+    icon: https://truecharts.org/img/hotlink-ok/chart-icons/freshrss.webp
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.24.0-0'
+    maintainers:
+    - email: info@truecharts.org
+      name: TrueCharts
+      url: https://truecharts.org
+    name: freshrss
+    sources:
+    - https://ghcr.io/linuxserver/freshrss
+    - https://github.com/FreshRSS/FreshRSS
+    - https://github.com/truecharts/charts/tree/master/charts/stable/freshrss
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/freshrss-20.2.35/freshrss-20.2.35.tgz
+    version: 20.2.35
+  - annotations:
+      max_scale_version: 24.04.1
+      min_scale_version: 24.04.0
+      truecharts.org/category: media
+      truecharts.org/max_helm_version: "3.15"
+      truecharts.org/min_helm_version: "3.11"
+      truecharts.org/train: stable
+    apiVersion: v2
     appVersion: 1.24.6
     created: "2025-03-13T22:56:59.999147377Z"
     dependencies:
@@ -5501,4 +5536,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2025-05-04T01:10:19.43688638Z"
+generated: "2025-05-04T01:37:55.29860727Z"
