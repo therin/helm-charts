@@ -6,9 +6,9 @@ metadata:
     app: sonarr
 spec:
   capacity:
-    storage: "5Ti"                    # nominal – NFS ignores blocks
+    storage: "5Ti" # nominal – NFS ignores blocks
   accessModes:
-    - ReadWriteMany                  # allow multiple writers  [oai_citation:0‡kubernetes.io](https://kubernetes.io/docs/concepts/storage/persistent-volumes/?utm_source=chatgpt.com)
+    - ReadWriteMany
   storageClassName: manual
   persistentVolumeReclaimPolicy: Retain  
   mountOptions:
