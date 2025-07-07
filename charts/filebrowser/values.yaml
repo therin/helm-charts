@@ -84,8 +84,7 @@ resources: {}
   #   memory: 128Mi
 
 # -- Node labels for pod assignment
-nodeSelector:
-  kubernetes.io/hostname: k3s-agent-02
+nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
 # -- Tolerations for pod assignment
 tolerations: []
