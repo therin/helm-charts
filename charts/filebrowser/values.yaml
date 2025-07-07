@@ -1,7 +1,3 @@
-# Default values for filebrowser.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
-
 # -- Number of replicas to run. Chart is not designed to scale horizontally, use at your own risk
 replicaCount: 1
 
@@ -9,7 +5,7 @@ image:
   # -- Container image name
   repository: docker.io/filebrowser/filebrowser
   # -- Container image pull policy
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # -- Overrides the image tag whose default is the chart appVersion.
   tag: ""
 
@@ -48,9 +44,9 @@ securityContext: {}
 
 service:
   # -- Kubernetes Service type
-  type: ClusterIP
+  type: LoadBalancer
   # -- Kubernetes Service port
-  port: 80
+  port: 4837
 
 ingress:
   # -- Enable the use of the ingress controller to access the web UI
@@ -88,7 +84,8 @@ resources: {}
   #   memory: 128Mi
 
 # -- Node labels for pod assignment
-nodeSelector: {}
+nodeSelector:
+  kubernetes.io/hostname: k3s-agent-02
 
 # -- Tolerations for pod assignment
 tolerations: []
@@ -102,7 +99,7 @@ rootDir:
   # -- Mount the root directory in read-only mode
   readOnly: false
   hostPath:
-    path: /path/on/host
+    path: /storage
   pvc:
     # -- Existing claim for the root directory
     existingClaim: ""

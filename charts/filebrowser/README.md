@@ -1,30 +1,13 @@
 # filebrowser
 
-![Version: 1.0.0](https://img.shields.io/badge/Version-1.0.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v2.23.0](https://img.shields.io/badge/AppVersion-v2.23.0-informational?style=flat-square)
-
 A Helm chart for the File Browser project
 
 **Homepage:** <https://filebrowser.org>
 
-## TL;DR;
-
-```console
-$ helm repo add utkuozdemir https://utkuozdemir.org/helm-charts
-$ helm install my-release utkuozdemir/filebrowser
-```
-
-## Introduction
 
 This chart packages the project **[filebrowser](https://filebrowser.org)** as a Helm chart.
 
 ## Installing the Chart
-
-To install the chart with the release name `my-release`:
-
-```console
-$ helm repo add utkuozdemir https://utkuozdemir.org/helm-charts
-$ helm install my-release utkuozdemir/filebrowser
-```
 
 **Important:** See the [Parameters](#parameters) section lists the parameters that need to be configured
 during the installation.
@@ -40,17 +23,6 @@ $ helm delete my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
-
-## Upgrade Notes
-
-Please read the upgrade notes before upgrading. There may be breaking changes!
-
-### From 0.1.x to 0.2.x
-
-- The values `persistence.rootDir.*` and `persistence.db.*` are
-renamed to `rootDir.pvc.*` and `db.pvc.*`. You should rename your values accordingly.
-- A new value `rootDir.type` is introduced. The default value is `pvc`, which is same as the
-previous default. You can instead set it to `hostPath` to mount
 
 ## Parameters
 
