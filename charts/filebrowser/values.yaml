@@ -94,7 +94,16 @@ affinity: {}
 
 rootDir:
   # -- type of rootDir mount. Valid values are [pvc, hostPath, emptyDir]
-  type: hostPath
+  type: pvc
+  nfs:
+    enabled: true
+    server: 192.168.4.129
+    path: /storage
+    mountOptions:
+      - nfsvers=4.1
+      - hard
+      - timeo=600
+      - actimeo=1
   # -- Mount the root directory in read-only mode
   readOnly: false
   hostPath:
@@ -106,7 +115,7 @@ rootDir:
     storageClassName: ""
     # -- Access modes for the root directory PVC
     accessModes:
-      - ReadWriteOnce
+      - ReadWriteMany
     # -- Size for the root directory PVC
     size: 2Gi
 

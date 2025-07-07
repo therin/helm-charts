@@ -1,4 +1,45 @@
+{{- /*
+     This template now supports three cases:
+
+     1. User points rootDir at an existing PVC        → .Values.rootDir.pvc.existingClaim set
+     2. User wants the chart to make a plain PVC      → rootDir.nfs.enabled = false (default)
+     3. User wants the chart to make an NFS-backed PV → rootDir.nfs.enabled = true
+*/ -}}
+
 {{- if and (eq .Values.rootDir.type "pvc") (not .Values.rootDir.pvc.existingClaim) }}
+
+{{- /* -------------------------------------------------------------------
+        Option-3: create a static NFS PersistentVolume to bind the claim
+     ------------------------------------------------------------------- */}}
+{{- if .Values.rootDir.nfs.enabled }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: {{ include "filebrowser.fullname" . }}-rootdir-pv
+  labels:
+    {{- include "filebrowser.labels" . | nindent 4 }}
+spec:
+  capacity:
+    storage: {{ .Values.rootDir.pvc.size | quote }}
+  accessModes:
+    {{- range .Values.rootDir.pvc.accessModes }}
+    - {{ . | quote }}
+    {{- end }}
+  persistentVolumeReclaimPolicy: Retain   # safer for shared NFS  [oai_citation:0‡kubernetes.io](https://kubernetes.io/docs/tasks/administer-cluster/change-pv-reclaim-policy/?utm_source=chatgpt.com)
+  storageClassName: {{ default "manual" .Values.rootDir.pvc.storageClassName }}
+  mountOptions:
+    {{- range .Values.rootDir.nfs.mountOptions }}
+    - {{ . | quote }}                     # e.g. nfsvers=4.1,hard,actimeo=1  [oai_citation:1‡stackoverflow.com](https://stackoverflow.com/questions/52617912/kubernetes-nfs-mount-options?utm_source=chatgpt.com) [oai_citation:2‡serverfault.com](https://serverfault.com/questions/755087/how-to-make-nfs-accesses-time-out-much-faster?utm_source=chatgpt.com)
+    {{- end }}
+  nfs:                                    # built-in NFS volume source  [oai_citation:3‡kubernetes.io](https://kubernetes.io/docs/concepts/storage/persistent-volumes/?utm_source=chatgpt.com)
+    server: {{ .Values.rootDir.nfs.server | quote }}
+    path:   {{ .Values.rootDir.nfs.path   | quote }}
+---
+{{- end }}
+
+{{- /* ---------------------------------------------------------------
+        Always create the PVC – it binds to the PV above if present
+     --------------------------------------------------------------- */}}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -13,7 +54,9 @@ spec:
   resources:
     requests:
       storage: {{ .Values.rootDir.pvc.size | quote }}
-  {{- if .Values.rootDir.pvc.storageClassName }}
-  storageClassName: {{ .Values.rootDir.pvc.storageClassName }}
+  storageClassName: {{ default "manual" .Values.rootDir.pvc.storageClassName }}
+  {{- /* Bind directly to the PV we just created when NFS is enabled */}}
+  {{- if .Values.rootDir.nfs.enabled }}
+  volumeName: {{ include "filebrowser.fullname" . }}-rootdir-pv
   {{- end }}
 {{- end }}
