@@ -46,7 +46,7 @@ service:
   # -- Kubernetes Service type
   type: LoadBalancer
   # -- Kubernetes Service port
-  port: 4837
+  port: 80
 
 ingress:
   # -- Enable the use of the ingress controller to access the web UI
@@ -144,7 +144,7 @@ initContainers: []
 # -- File Browser application specific configuration
 # @default -- see [values.yaml](values.yaml)
 config:
-  port: 8080
+  port: 80
   baseURL: ""
   address: ""
   log: stdout
