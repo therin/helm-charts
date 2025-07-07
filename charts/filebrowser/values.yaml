@@ -94,7 +94,7 @@ affinity: {}
 
 rootDir:
   # -- type of rootDir mount. Valid values are [pvc, hostPath, emptyDir]
-  type: pvc
+  type: hostPath
   # -- Mount the root directory in read-only mode
   readOnly: false
   hostPath:
