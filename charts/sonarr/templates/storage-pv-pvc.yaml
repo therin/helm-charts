@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: torrents-pv
+  labels:
+    app: sonarr
+spec:
+  capacity:
+    storage: "5Ti"                    # nominal – NFS ignores blocks
+  accessModes:
+    - ReadWriteMany                  # allow multiple writers  [oai_citation:0‡kubernetes.io](https://kubernetes.io/docs/concepts/storage/persistent-volumes/?utm_source=chatgpt.com)
+  storageClassName: manual
+  persistentVolumeReclaimPolicy: Retain  
+  mountOptions:
+    - nfsvers=4.1
+    - hard
+    - timeo=600
+    - actimeo=1
+  nfs:
+    server: 192.168.4.129
+    path: /storage
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: torrents-volume
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: "5Ti"
+  volumeName: torrents-pv

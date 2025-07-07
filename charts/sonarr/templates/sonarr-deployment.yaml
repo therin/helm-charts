@@ -35,8 +35,7 @@ spec:
           persistentVolumeClaim:
             claimName: sonarr-config
         - name: torrents-volume
-          hostPath:
-            path: /torrents
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: torrents-volume
       nodeSelector:
         kubernetes.io/hostname: k3s-agent-02
