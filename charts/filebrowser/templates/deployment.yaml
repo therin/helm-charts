@@ -36,6 +36,11 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Chart.Name }}
+          # ---------- FIX: point the binary at the ConfigMap ----------
+          args:
+            - "--config"
+            - "/.filebrowser.json"
+          # ------------------------------------------------------------
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
