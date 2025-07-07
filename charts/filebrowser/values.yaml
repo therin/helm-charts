@@ -98,7 +98,7 @@ rootDir:
   # -- Mount the root directory in read-only mode
   readOnly: false
   hostPath:
-    path: /storage
+    path: /torrents
   pvc:
     # -- Existing claim for the root directory
     existingClaim: ""
@@ -149,4 +149,4 @@ config:
   address: ""
   log: stdout
   database: /db/database.db
-  root: /torrents
+  root: /rootdir
