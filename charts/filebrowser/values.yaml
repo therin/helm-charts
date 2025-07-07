@@ -149,4 +149,4 @@ config:
   address: ""
   log: stdout
   database: /db/database.db
-  root: /rootdir
+  root: /storage
