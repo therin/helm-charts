@@ -34,6 +34,26 @@ entries:
       artifacthub.io/license: MIT
     apiVersion: v2
     appVersion: v2.36.3
+    created: "2025-07-07T04:00:24.756429772Z"
+    description: A Helm chart for the File Browser project
+    digest: 5594f78f1cde8cdd5a2ef08f2de889b1fd8e7105d3f5e234e2f294259608cc56
+    home: https://filebrowser.org
+    keywords:
+    - filebrowser
+    - file-browser
+    - file-server
+    - http-file-server
+    name: filebrowser
+    sources:
+    - https://github.com/filebrowser/filebrowser
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/filebrowser-1.0.2/filebrowser-1.0.2.tgz
+    version: 1.0.2
+  - annotations:
+      artifacthub.io/license: MIT
+    apiVersion: v2
+    appVersion: v2.36.3
     created: "2025-07-07T03:48:06.170315185Z"
     description: A Helm chart for the File Browser project
     digest: 21f7760c65168cc4b95f5848b3dbc2e3aca03b5095e552b0465c68f0ce143a2b
@@ -5667,4 +5687,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2025-07-07T03:48:06.170778938Z"
+generated: "2025-07-07T04:00:24.756919051Z"
