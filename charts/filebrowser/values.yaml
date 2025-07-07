@@ -46,7 +46,7 @@ service:
   # -- Kubernetes Service type
   type: LoadBalancer
   # -- Kubernetes Service port
-  port: 80
+  port: 4837
 
 ingress:
   # -- Enable the use of the ingress controller to access the web UI
