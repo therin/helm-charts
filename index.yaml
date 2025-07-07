@@ -34,6 +34,26 @@ entries:
       artifacthub.io/license: MIT
     apiVersion: v2
     appVersion: v2.36.3
+    created: "2025-07-07T09:26:37.78932132Z"
+    description: A Helm chart for the File Browser project
+    digest: b6098b2821c33b2ea7ae5aa5da1a7a12bff988d405d6cae18a5f1b1e13064e5d
+    home: https://filebrowser.org
+    keywords:
+    - filebrowser
+    - file-browser
+    - file-server
+    - http-file-server
+    name: filebrowser
+    sources:
+    - https://github.com/filebrowser/filebrowser
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/filebrowser-1.0.12/filebrowser-1.0.12.tgz
+    version: 1.0.12
+  - annotations:
+      artifacthub.io/license: MIT
+    apiVersion: v2
+    appVersion: v2.36.3
     created: "2025-07-07T08:59:13.126154414Z"
     description: A Helm chart for the File Browser project
     digest: 4c9ec096ccc1a0f8dc98d2f92a22b50cd30a338cfa006e3d67a35d816028b0be
@@ -5658,6 +5678,16 @@ entries:
   sonarr:
   - apiVersion: v2
     appVersion: 1.0.11
+    created: "2025-07-07T09:26:37.891345753Z"
+    description: A Helm chart for sonarr
+    digest: 022a602d495e42d10a9bb13391601893fe1a8f0c3d101b342ab86ae2a0711b6b
+    name: sonarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/sonarr-1.0.16/sonarr-1.0.16.tgz
+    version: 1.0.16
+  - apiVersion: v2
+    appVersion: 1.0.11
     created: "2024-12-23T04:06:45.678175989Z"
     description: A Helm chart for sonarr
     digest: 7439c4100f013d147e50cadfe60dff91fb679d85d8ed2949a52074ea393b343c
@@ -5867,4 +5897,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2025-07-07T08:59:13.126803869Z"
+generated: "2025-07-07T09:26:37.891961643Z"
