@@ -20,15 +20,6 @@ configMap:
   # Key in the ConfigMap that contains the JSON configuration
   key: "config.json"
 
-# Resource limits
-# resources:
-#   limits:
-#     cpu: 500m
-#     memory: 512Mi
-#   requests:
-#     cpu: 100m
-#     memory: 128Mi
-
 # Node selector and tolerations
 nodeSelector: {}
 tolerations: []
@@ -49,4 +40,3 @@ podSecurityContext:
 monitoring:
   enabled: false
   port: 8080
-

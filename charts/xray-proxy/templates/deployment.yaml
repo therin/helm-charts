@@ -45,8 +45,6 @@ spec:
               readOnly: true
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          resources:
-            {{- toYaml .Values.resources | nindent 12 }}
           livenessProbe:
             tcpSocket:
               port: 1080

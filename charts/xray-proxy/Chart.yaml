@@ -2,7 +2,7 @@ apiVersion: v2
 name: xray-proxy
 description: Kubernetes Helm chart for deploying Xray proxy server with SOCKS5 and VLESS+Reality support
 type: application
-version: 2.0.0
+version: 2.0.1
 appVersion: "1.8.24"
 keywords:
   - proxy

@@ -99,7 +99,7 @@ Create a JSON configuration file with your generated keys:
 Create a ConfigMap with your configuration:
 
 ```bash
-kubectl create configmap xray-config --from-file=config.json=your-config.json --namespace=your-namespace
+kubectl create configmap xray-config --from-file=config.json --namespace=flux-system
 ```
 
 ## Configuration References
