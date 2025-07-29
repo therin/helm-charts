@@ -12,6 +12,14 @@ service:
   socks5Port: 1080
   realityPort: 443
 
+# Create and manage this ConfigMap manually outside of Helm
+configMap:
+  # Name of the external ConfigMap containing your Xray configuration
+  # Create manually with: kubectl create configmap xray-config --from-file=config.json=your-config.json
+  name: "xray-config"
+  # Key in the ConfigMap that contains the JSON configuration
+  key: "config.json"
+
 # Resource limits
 # resources:
 #   limits:
@@ -42,66 +50,3 @@ monitoring:
   enabled: false
   port: 8080
 
-# Based on examples from https://github.com/XTLS/Xray-examples
-xrayConfig: |
-  {
-    "log": {
-      "loglevel": "info"
-    },
-    "inbounds": [
-      {
-        "tag": "socks5",
-        "port": 1080,
-        "protocol": "socks",
-        "settings": {
-          "auth": "noauth",
-          "udp": true
-        }
-      },
-      {
-        "tag": "vless-reality",
-        "port": 443,
-        "protocol": "vless",
-        "settings": {
-          "clients": [
-            {
-              "id": "REPLACE_WITH_YOUR_UUID",
-              "flow": "xtls-rprx-vision"
-            }
-          ],
-          "decryption": "none"
-        },
-        "streamSettings": {
-          "network": "tcp",
-          "security": "reality",
-          "realitySettings": {
-            "show": false,
-            "dest": "www.microsoft.com:443",
-            "xver": 0,
-            "serverNames": [
-              "www.microsoft.com"
-            ],
-            "privateKey": "REPLACE_WITH_YOUR_PRIVATE_KEY",
-            "shortIds": [
-              "REPLACE_WITH_SHORT_ID"
-            ]
-          }
-        }
-      }
-    ],
-    "outbounds": [
-      {
-        "protocol": "freedom",
-        "tag": "direct"
-      }
-    ],
-    "routing": {
-      "rules": [
-        {
-          "type": "field",
-          "inboundTag": ["socks5", "vless-reality"],
-          "outboundTag": "direct"
-        }
-      ]
-    }
-  }
