@@ -49,14 +49,3 @@ Selector labels
 app.kubernetes.io/name: {{ include "xray-proxy.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
-
-{{/*
-Create the name of the service account to use
-*/}}
-{{- define "xray-proxy.serviceAccountName" -}}
-{{- if .Values.serviceAccount.create }}
-{{- default (include "xray-proxy.fullname" .) .Values.serviceAccount.name }}
-{{- else }}
-{{- default "default" .Values.serviceAccount.name }}
-{{- end }}
-{{- end }}

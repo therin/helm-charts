@@ -1,148 +1,107 @@
-# Default values for xray-proxy
-# This is a YAML-formatted file.
+# Deployment settings
+replicaCount: 1
 
-# Image configuration
 image:
   repository: teddysun/xray
+  tag: "1.8.24"
   pullPolicy: IfNotPresent
-  tag: "latest"
-
-# Service account
-serviceAccount:
-  create: true
-  annotations: {}
-  name: ""
-
-# Pod security context
-podSecurityContext:
-  fsGroup: 2000
-
-# Container security context
-securityContext:
-  capabilities:
-    drop:
-    - ALL
-  readOnlyRootFilesystem: true
-  runAsNonRoot: true
-  runAsUser: 1000
 
 # Service configuration
 service:
-  type: ClusterIP
+  type: LoadBalancer
   socks5Port: 1080
   realityPort: 443
-  annotations: {}
 
-# Ingress configuration (optional)
-ingress:
-  enabled: false
-  className: ""
-  annotations: {}
-  hosts:
-    - host: xray-proxy.local
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
+# Resource limits
+# resources:
+#   limits:
+#     cpu: 500m
+#     memory: 512Mi
+#   requests:
+#     cpu: 100m
+#     memory: 128Mi
 
-# Resource limits and requests
-resources:
-  limits:
-    cpu: 500m
-    memory: 512Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
-
-# Horizontal Pod Autoscaler
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-
-# Node selector
+# Node selector and tolerations
 nodeSelector: {}
-
-# Tolerations
 tolerations: []
-
-# Affinity
 affinity: {}
 
-# Replica count
-replicaCount: 1
+# Security context
+securityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
 
-# Xray configuration
-xray:
-  # Log level: debug, info, warning, error, none
-  logLevel: warning
-  
-  # SOCKS5 configuration
-  socks5:
-    enabled: true
-    port: 1080
-    auth: "noauth"  # noauth or password
-    udp: true
-    # accounts:  # Only used when auth is "password"
-    #   - user: "username"
-    #     pass: "password"
-  
-  # VLESS+Reality configuration
-  reality:
-    enabled: true
-    port: 443
-    # These will be generated if not provided
-    privateKey: ""
-    publicKey: ""
-    shortIds: []
-    # Target domain for Reality camouflage
-    dest: "cloudflare.com:443"
-    serverNames:
-      - "cloudflare.com"
-      - "www.cloudflare.com"
-    # Client configuration
-    clients: []
-    # Example client:
-    # - id: "uuid-here"
-    #   flow: "xtls-rprx-vision"
-  
-  # Routing configuration
-  routing:
-    enabled: true
-    rules:
-      # Block private IPs
-      - type: "field"
-        ip: ["geoip:private"]
-        outboundTag: "blocked"
-      # Direct connection for everything else
-      - type: "field"
-        network: "tcp,udp"
-        outboundTag: "direct"
+# Pod security context
+podSecurityContext:
+  fsGroup: 1000
 
-# Monitoring and health checks
+# Monitoring (optional)
 monitoring:
-  enabled: true
-  port: 8080
-  path: /stats
-
-# Health check configuration
-healthcheck:
-  enabled: true
-  initialDelaySeconds: 10
-  periodSeconds: 30
-  timeoutSeconds: 5
-  failureThreshold: 3
-
-# Persistence (for logs if needed)
-persistence:
   enabled: false
-  storageClass: ""
-  accessMode: ReadWriteOnce
-  size: 1Gi
+  port: 8080
 
-# Pod annotations
-podAnnotations: {}
-
-# Pod labels
-podLabels: {}
+# Based on examples from https://github.com/XTLS/Xray-examples
+xrayConfig: |
+  {
+    "log": {
+      "loglevel": "info"
+    },
+    "inbounds": [
+      {
+        "tag": "socks5",
+        "port": 1080,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        }
+      },
+      {
+        "tag": "vless-reality",
+        "port": 443,
+        "protocol": "vless",
+        "settings": {
+          "clients": [
+            {
+              "id": "REPLACE_WITH_YOUR_UUID",
+              "flow": "xtls-rprx-vision"
+            }
+          ],
+          "decryption": "none"
+        },
+        "streamSettings": {
+          "network": "tcp",
+          "security": "reality",
+          "realitySettings": {
+            "show": false,
+            "dest": "www.microsoft.com:443",
+            "xver": 0,
+            "serverNames": [
+              "www.microsoft.com"
+            ],
+            "privateKey": "REPLACE_WITH_YOUR_PRIVATE_KEY",
+            "shortIds": [
+              "REPLACE_WITH_SHORT_ID"
+            ]
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "tag": "direct"
+      }
+    ],
+    "routing": {
+      "rules": [
+        {
+          "type": "field",
+          "inboundTag": ["socks5", "vless-reality"],
+          "outboundTag": "direct"
+        }
+      ]
+    }
+  }
