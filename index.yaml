@@ -5919,4 +5919,27 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/vima-1.0.1/vima-1.0.1.tgz
     version: 1.0.1
-generated: "2025-07-28T08:36:35.560529691Z"
+  xray-proxy:
+  - apiVersion: v2
+    appVersion: 1.8.24
+    created: "2025-07-29T05:47:41.153621141Z"
+    description: A Helm chart for Xray SOCKS5 proxy with VLESS+Reality support
+    digest: 3002b35c9321c10f812ab22e2673a32040a62a5bae8a6ff56b9ff2dd3370e086
+    home: https://github.com/XTLS/Xray-core
+    keywords:
+    - xray
+    - proxy
+    - socks5
+    - vless
+    - reality
+    maintainers:
+    - email: maintainer@example.com
+      name: kube-socks5
+    name: xray-proxy
+    sources:
+    - https://github.com/XTLS/Xray-core
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-07-29T05:47:41.154256538Z"
