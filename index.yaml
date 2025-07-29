@@ -5922,6 +5922,27 @@ entries:
   xray-proxy:
   - apiVersion: v2
     appVersion: 1.8.24
+    created: "2025-07-29T06:32:33.077596178Z"
+    description: Kubernetes Helm chart for deploying Xray proxy server with SOCKS5
+      and VLESS+Reality support
+    digest: 45d13fb07eae4914b508f940ebc6ef4dccdfc12e4bdbca14ae2137d19e4c3415
+    home: https://github.com/XTLS/Xray-core
+    keywords:
+    - proxy
+    - xray
+    - vless
+    - reality
+    - socks5
+    name: xray-proxy
+    sources:
+    - https://github.com/XTLS/Xray-core
+    - https://github.com/XTLS/Xray-examples
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/xray-proxy-2.0.0/xray-proxy-2.0.0.tgz
+    version: 2.0.0
+  - apiVersion: v2
+    appVersion: 1.8.24
     created: "2025-07-29T05:47:41.153621141Z"
     description: A Helm chart for Xray SOCKS5 proxy with VLESS+Reality support
     digest: 3002b35c9321c10f812ab22e2673a32040a62a5bae8a6ff56b9ff2dd3370e086
@@ -5942,4 +5963,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-29T05:47:41.154256538Z"
+generated: "2025-07-29T06:32:33.078036574Z"
