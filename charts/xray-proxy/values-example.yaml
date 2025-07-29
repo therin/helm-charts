@@ -1,0 +1,151 @@
+# Example values for xray-proxy.
+# This is a YAML-formatted file.
+# Declare variables to be substituted into your templates.
+
+replicaCount: 1
+
+image:
+  repository: teddysun/xray
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "1.8.24"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext:
+  fsGroup: 2000
+
+securityContext:
+  capabilities:
+    drop:
+    - ALL
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+
+service:
+  type: ClusterIP
+  annotations: {}
+  # External IPs for the service
+  externalIPs: []
+  # LoadBalancer IP if service type is LoadBalancer
+  loadBalancerIP: ""
+  # LoadBalancer source ranges
+  loadBalancerSourceRanges: []
+  # ClusterIP if service type is ClusterIP
+  clusterIP: ""
+  # Service ports (override container ports if needed)
+  socks5Port: 1080
+  realityPort: 443
+  # NodePort settings (only for NodePort/LoadBalancer service types)
+  socks5NodePort: ""
+  realityNodePort: ""
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Extra environment variables
+extraEnv: []
+  # - name: CUSTOM_VAR
+  #   value: "custom_value"
+
+# Xray configuration
+xray:
+  # Log level: debug, info, warning, error, none
+  logLevel: "warning"
+  
+  # SOCKS5 proxy configuration
+  socks5:
+    enabled: true
+    port: 1080
+    # Authentication: noauth, password
+    auth: "noauth"
+    # Enable UDP support
+    udp: true
+    # User accounts (only used when auth is "password")
+    accounts: []
+      # - user: "user1"
+      #   pass: "password1"
+      # - user: "user2"
+      #   pass: "password2"
+  
+  # VLESS + Reality configuration
+  reality:
+    enabled: true
+    port: 443
+    # Target domain for Reality (must be a real HTTPS website)
+    dest: "www.microsoft.com:443"
+    # Server names for SNI
+    serverNames:
+      - "www.microsoft.com"
+    # Reality private key (generate with: xray x25519)
+    privateKey: "EXAMPLE_PRIVATE_KEY_REPLACE_WITH_REAL_KEY"
+    # Reality public key (generate with: xray x25519)
+    publicKey: "EXAMPLE_PUBLIC_KEY_REPLACE_WITH_REAL_KEY"
+    # Short IDs (generate with: openssl rand -hex 8)
+    shortIds:
+      - "a1b2c3d4"
+      - "e5f6g7h8"
+      - "i9j0k1l2"
+    # Client configurations
+    clients:
+      - id: "12345678-1234-1234-1234-123456789abc"
+        flow: "xtls-rprx-vision"
+      - id: "87654321-4321-4321-4321-cba987654321"
+        flow: "xtls-rprx-vision"
+  
+  # Routing configuration
+  routing:
+    enabled: false
+    rules: []
+      # - type: "field"
+      #   ip: ["geoip:private"]
+      #   outboundTag: "blocked"
+      # - type: "field"
+      #   network: "udp"
+      #   outboundTag: "direct"
+
+# Health check configuration
+healthcheck:
+  enabled: true
+  initialDelaySeconds: 10
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Monitoring configuration
+monitoring:
+  enabled: false
+  port: 8080
+  # Prometheus metrics endpoint will be available at /stats/prometheus

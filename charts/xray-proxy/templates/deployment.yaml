@@ -1,0 +1,114 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "xray-proxy.fullname" . }}
+  labels:
+    {{- include "xray-proxy.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "xray-proxy.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        checksum/secret: {{ include (print $.Template.BasePath "/secret.yaml") . | sha256sum }}
+        {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      labels:
+        {{- include "xray-proxy.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "xray-proxy.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - /usr/bin/xray
+            - run
+            - -config
+            - /etc/xray/config.json
+          ports:
+            {{- if .Values.xray.socks5.enabled }}
+            - name: socks5
+              containerPort: {{ .Values.xray.socks5.port }}
+              protocol: TCP
+            {{- end }}
+            {{- if .Values.xray.reality.enabled }}
+            - name: vless-reality
+              containerPort: {{ .Values.xray.reality.port }}
+              protocol: TCP
+            {{- end }}
+            {{- if .Values.monitoring.enabled }}
+            - name: metrics
+              containerPort: {{ .Values.monitoring.port }}
+              protocol: TCP
+            {{- end }}
+          {{- if .Values.healthcheck.enabled }}
+          livenessProbe:
+            tcpSocket:
+              port: {{ if .Values.xray.socks5.enabled }}{{ .Values.xray.socks5.port }}{{ else }}{{ .Values.xray.reality.port }}{{ end }}
+            initialDelaySeconds: {{ .Values.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.healthcheck.failureThreshold }}
+          readinessProbe:
+            tcpSocket:
+              port: {{ if .Values.xray.socks5.enabled }}{{ .Values.xray.socks5.port }}{{ else }}{{ .Values.xray.reality.port }}{{ end }}
+            initialDelaySeconds: {{ .Values.healthcheck.initialDelaySeconds }}
+            periodSeconds: {{ .Values.healthcheck.periodSeconds }}
+            timeoutSeconds: {{ .Values.healthcheck.timeoutSeconds }}
+            failureThreshold: {{ .Values.healthcheck.failureThreshold }}
+          {{- end }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          volumeMounts:
+            - name: config
+              mountPath: /etc/xray
+              readOnly: true
+            {{- if .Values.xray.reality.enabled }}
+            - name: secret
+              mountPath: /etc/xray/secrets
+              readOnly: true
+            {{- end }}
+          env:
+            - name: XRAY_LOCATION_ASSET
+              value: "/usr/share/xray"
+            - name: XRAY_LOCATION_CONFIG
+              value: "/etc/xray/config.json"
+            {{- if .Values.extraEnv }}
+            {{- toYaml .Values.extraEnv | nindent 12 }}
+            {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "xray-proxy.fullname" . }}-config
+        {{- if .Values.xray.reality.enabled }}
+        - name: secret
+          secret:
+            secretName: {{ include "xray-proxy.fullname" . }}-secret
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
