@@ -323,6 +323,30 @@ entries:
     - https://github.com/therin/helm-charts/releases/download/flare-solver-1.0.1/flare-solver-1.0.1.tgz
     version: 1.0.1
   freshrss:
+  - apiVersion: v2
+    appVersion: 1.25.01
+    created: "2025-08-18T23:36:46.105808387Z"
+    dependencies:
+    - name: common
+      repository: oci://tccr.io/truecharts
+      version: 26.2.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 946146827322154b306858e50900d8ce0a795aa8bad81300453b66c697e3a9bf
+    home: https://truecharts.org/charts/stable/freshrss
+    icon: https://truecharts.org/img/hotlink-ok/chart-icons/freshrss.webp
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.24.0-0'
+    name: freshrss
+    sources:
+    - https://ghcr.io/linuxserver/freshrss
+    - https://github.com/FreshRSS/FreshRSS
+    - https://github.com/truecharts/charts/tree/master/charts/stable/freshrss
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/freshrss-20.3.9/freshrss-20.3.9.tgz
+    version: 20.3.9
   - annotations:
       max_scale_version: 24.04.1
       min_scale_version: 24.04.0
@@ -5984,4 +6008,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-07-29T07:48:46.398055141Z"
+generated: "2025-08-18T23:36:46.106300572Z"
