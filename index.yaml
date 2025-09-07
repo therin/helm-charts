@@ -34,6 +34,26 @@ entries:
       artifacthub.io/license: MIT
     apiVersion: v2
     appVersion: v2.36.3
+    created: "2025-09-07T02:12:38.602780524Z"
+    description: A Helm chart for the File Browser project
+    digest: ee214ddc3afff8039a6a72d928a872a6f1b8144747b88333c3259aa3ddb1b7eb
+    home: https://filebrowser.org
+    keywords:
+    - filebrowser
+    - file-browser
+    - file-server
+    - http-file-server
+    name: filebrowser
+    sources:
+    - https://github.com/filebrowser/filebrowser
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/filebrowser-1.0.13/filebrowser-1.0.13.tgz
+    version: 1.0.13
+  - annotations:
+      artifacthub.io/license: MIT
+    apiVersion: v2
+    appVersion: v2.36.3
     created: "2025-07-07T09:26:37.78932132Z"
     description: A Helm chart for the File Browser project
     digest: b6098b2821c33b2ea7ae5aa5da1a7a12bff988d405d6cae18a5f1b1e13064e5d
@@ -6030,4 +6050,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-08-29T01:08:42.844336063Z"
+generated: "2025-09-07T02:12:38.712244761Z"
