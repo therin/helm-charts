@@ -1520,6 +1520,28 @@ entries:
     version: 1.0.0
   librechat:
   - apiVersion: v2
+    created: "2025-09-14T05:43:31.204299806Z"
+    dependencies:
+    - condition: meilisearch.enabled
+      name: meilisearch
+      repository: https://meilisearch.github.io/meilisearch-kubernetes
+      version: 0.12.0
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.7.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.4.3
+    description: Frontend for AI endpoints
+    digest: b9a41657edbc6e87673c2eb3ec66dcce15d0748e1ea686ed35fc5f19de220e3f
+    name: librechat
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-1.0.94/librechat-1.0.94.tgz
+    version: 1.0.94
+  - apiVersion: v2
     created: "2025-08-29T01:08:42.84389308Z"
     dependencies:
     - condition: meilisearch.enabled
@@ -3478,6 +3500,21 @@ entries:
     - https://github.com/therin/helm-charts/releases/download/librechat-1.0.0/librechat-1.0.0.tgz
     version: 1.0.0
   librechat-rag-api:
+  - apiVersion: v2
+    appVersion: v0.3.1
+    created: "2025-09-14T05:43:31.350476254Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.9
+    description: A Helm chart for LibreChat
+    digest: 66631c4641d2774bd716de6ff256a0e824386b876eaad4d446484819dca6ae21
+    name: librechat-rag-api
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-rag-api-0.3.1/librechat-rag-api-0.3.1.tgz
+    version: 0.3.1
   - apiVersion: v2
     appVersion: v0.3.0
     created: "2025-02-18T01:26:10.215449104Z"
@@ -6060,4 +6097,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-09-07T03:05:15.589258407Z"
+generated: "2025-09-14T05:43:31.351434443Z"
