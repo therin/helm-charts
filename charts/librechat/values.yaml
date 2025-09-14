@@ -4,7 +4,7 @@ image:
   repository: ghcr.io/danny-avila/librechat
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.8.0-rc3"
+  tag: "v0.8.0-rc4"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -110,16 +110,13 @@ persistence:
 
 config:
   file:
-    # Use librechat.yaml config file
     enabled: true
     configMapKeyRef:
       name: librechat-config
       key: librechat.yaml
 
-  # Set the contents of librechat.yaml in this file
-  # configYamlContent: ""
   configYamlContent: |
-    version: 1.2.0
+    version: 1.2.9
     speech:
       stt:
         openai:
@@ -129,7 +126,37 @@ config:
         openai:
           apiKey: '${STT_API_KEY}'
           model: 'tts-1'
-          voices: ['alloy', 'echo', 'fable', 'onyx', 'nova', 'shimmer']
+          voices: ['alloy','echo','fable','onyx','nova','shimmer']
+    mcpServers:
+      perplexity:
+        type: streamable-http
+        url: '${PERPLEXITY_MCP_URL}'
+        timeout: 30000
+        initTimeout: 10000
+        serverInstructions: true
+    endpoints:
+      custom:
+        - name: "Perplexity"
+          apiKey: "${PERPLEXITY_API_KEY}"
+          baseURL: "https://api.perplexity.ai/"
+          models:
+            default: ["sonar-deep-research","sonar-reasoning-pro","sonar-pro","sonar"]
+          fetch: false
+          titleConvo: true
+          titleModel: "llama-3-sonar-small-32k-chat"
+          summarize: false
+          forcePrompt: false
+          dropParams: ["stop","frequency_penalty"]
+          modelDisplayLabel: "Perplexity"
+    webSearch:
+      serperApiKey: "${SERPER_API_KEY}"
+      searchProvider: "serper"
+      firecrawlApiKey: "${FIRECRAWL_API_KEY}"
+      scraperType: "firecrawl"
+      cohereApiKey: "${COHERE_API_KEY}"
+      rerankerType: "cohere"
+      scraperTimeout: 7500
+      safeSearch: 0
 
   envSecrets:
     # Use this when using one k8s secret for multiply env secrets
