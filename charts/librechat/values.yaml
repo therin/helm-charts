@@ -143,7 +143,7 @@ config:
             default: ["sonar-deep-research","sonar-reasoning-pro","sonar-pro","sonar"]
           fetch: false
           titleConvo: true
-          titleModel: "llama-3-sonar-small-32k-chat"
+          titleModel: "sonar"
           summarize: false
           forcePrompt: false
           dropParams: ["stop","frequency_penalty"]
