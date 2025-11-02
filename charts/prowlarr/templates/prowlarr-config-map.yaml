@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prowlarr
+  labels:
+    app: prowlarr
+data:
+  TZ: Australia/Sydney
+  PUID: "1000"
+  PGID: "1000"
