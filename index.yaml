@@ -4972,6 +4972,16 @@ entries:
   radarr:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2026-01-03T01:19:15.87172947Z"
+    description: A Helm chart for radarr
+    digest: aaa6044f5abdea8961dbc8786a270413f020b03b234ecf56db1bc06e0afec654
+    name: radarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/radarr-1.0.2/radarr-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2024-12-23T02:26:32.295649371Z"
     description: A Helm chart for radarr
     digest: 4170e6f09a438b0a348bd04930784c627ef71cbc3ed650f36c9e83e517e00282
@@ -6130,4 +6140,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2025-11-02T04:59:02.238356671Z"
+generated: "2026-01-03T01:19:16.965819921Z"
