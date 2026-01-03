@@ -345,6 +345,30 @@ entries:
   freshrss:
   - apiVersion: v2
     appVersion: 1.25.01
+    created: "2026-01-03T02:07:07.081543142Z"
+    dependencies:
+    - name: common
+      repository: oci://oci.trueforge.org/truecharts
+      version: 26.2.0
+    description: FreshRSS is a self-hosted RSS feed aggregator
+    digest: 98db82c014201e167bd99da8ef63b279663faafd9774f3a97a4bcc6858a8fafd
+    home: https://truecharts.org/charts/stable/freshrss
+    icon: https://truecharts.org/img/hotlink-ok/chart-icons/freshrss.webp
+    keywords:
+    - freshrss
+    - rss
+    kubeVersion: '>=1.24.0-0'
+    name: freshrss
+    sources:
+    - https://ghcr.io/linuxserver/freshrss
+    - https://github.com/FreshRSS/FreshRSS
+    - https://github.com/truecharts/charts/tree/master/charts/stable/freshrss
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/freshrss-20.3.10/freshrss-20.3.10.tgz
+    version: 20.3.10
+  - apiVersion: v2
+    appVersion: 1.25.01
     created: "2025-08-18T23:36:46.105808387Z"
     dependencies:
     - name: common
@@ -6150,4 +6174,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T01:55:16.908771652Z"
+generated: "2026-01-03T02:07:07.082017928Z"
