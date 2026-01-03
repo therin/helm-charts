@@ -5120,6 +5120,16 @@ entries:
   prowlarr:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2026-01-03T04:25:51.306261897Z"
+    description: A Helm chart for prowlarr
+    digest: 44c5a171a1d1c8b218ffbcf737c0d9d949c79048f23cab4e5de858a5f5b80dd1
+    name: prowlarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/prowlarr-1.0.1/prowlarr-1.0.1.tgz
+    version: 1.0.1
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2025-11-02T04:59:02.237888823Z"
     description: A Helm chart for prowlarr
     digest: 1fa54b0bb24865cb7b4cb25944490e463874c4a709c8dfb3ae49cb94ca991b72
@@ -6351,4 +6361,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T04:02:58.016674937Z"
+generated: "2026-01-03T04:25:51.307245882Z"
