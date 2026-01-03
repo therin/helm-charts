@@ -5846,6 +5846,16 @@ entries:
   sonarr:
   - apiVersion: v2
     appVersion: 1.0.13
+    created: "2026-01-03T01:55:16.907975538Z"
+    description: A Helm chart for sonarr
+    digest: b4be84fb77f955a406a2b9ebd1e85887c74ef8ce7c68df3bf7f18e39bf15b36f
+    name: sonarr
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/sonarr-1.0.18/sonarr-1.0.18.tgz
+    version: 1.0.18
+  - apiVersion: v2
+    appVersion: 1.0.13
     created: "2025-09-07T03:05:15.588652029Z"
     description: A Helm chart for sonarr
     digest: 94fcef1c8943e7397db5192518ef1f1853438f7c9eefc0557931b6219e51550a
@@ -6140,4 +6150,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T01:19:16.965819921Z"
+generated: "2026-01-03T01:55:16.908771652Z"
