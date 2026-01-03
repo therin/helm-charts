@@ -386,6 +386,15 @@ mongodb:
   # fullnameOverride: librechat-mongodb
   # nodeSelector: {kubernetes.io/hostname: k3s-agent-02}
 
+  global:
+    security:
+      allowInsecureImages: true
+
+  image:
+    registry: docker.io
+    repository: bitnamilegacy/mongodb
+    tag: 8.0.4-debian-12-r3
+
   extraEnvVars:
     - name: LOG_LEVEL
       value: debug
@@ -455,4 +464,9 @@ mongodb:
     accessMode: ReadWriteOnce
     size: 1Gi
 
-  volumePermissions: { enabled: true }
+  volumePermissions:
+    enabled: true
+    image:
+      registry: docker.io
+      repository: bitnamilegacy/os-shell
+      tag: 12-debian-12-r17
