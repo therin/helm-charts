@@ -6118,6 +6118,16 @@ entries:
   vima:
   - apiVersion: v2
     appVersion: 1.0.3
+    created: "2026-01-03T03:20:49.631470763Z"
+    description: A Helm chart for vima
+    digest: bf4b5f90d8691d1869f982b61b510b2b40047058994875226c73cbba33d0d616
+    name: vima
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/vima-1.0.6/vima-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
+    appVersion: 1.0.3
     created: "2024-07-20T07:09:56.822282224Z"
     description: A Helm chart for vima
     digest: 5bebdbf103640167af13b15aee898bebbaa8ac7e5017f8b021e84557a467f9a8
@@ -6231,4 +6241,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T03:12:36.031564053Z"
+generated: "2026-01-03T03:20:49.631990155Z"
