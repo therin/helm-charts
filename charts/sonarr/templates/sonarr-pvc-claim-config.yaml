@@ -4,11 +4,12 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: sonarr-config
-  name: sonarr-config
+  name: sonarr-config-longhorn
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 100Mi
+      storage: 500Mi
 status: {}
