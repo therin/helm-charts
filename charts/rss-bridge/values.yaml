@@ -78,9 +78,10 @@ persistence:
   config:
     enabled: true
     retain: true
-    # storageClass: ""
+    storageClass: "longhorn"
+    existingClaim: "rss-bridge-config-longhorn"
     accessMode: ReadWriteOnce
-    size: 1Gi
+    size: 100Mi
   cache:
     enabled: false
     type: emptyDir
