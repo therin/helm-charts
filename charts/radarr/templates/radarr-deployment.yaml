@@ -33,7 +33,7 @@ spec:
       volumes:
         - name: radarr-config
           persistentVolumeClaim:
-            claimName: radarr-config
+            claimName: radarr-config-longhorn
         - name: torrents-volume
           hostPath:
             path: /torrents

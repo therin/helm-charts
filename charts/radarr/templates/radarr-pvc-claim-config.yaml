@@ -4,10 +4,11 @@ metadata:
   creationTimestamp: null
   labels:
     io.kompose.service: radarr-config
-  name: radarr-config
+  name: radarr-config-longhorn
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
       storage: 100Mi
