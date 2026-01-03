@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: teddysun/xray
-  tag: "1.8.24"
+  tag: "25.12.8"
   pullPolicy: IfNotPresent
 
 # Service configuration
