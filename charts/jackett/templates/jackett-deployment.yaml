@@ -31,6 +31,6 @@ spec:
       volumes:
         - name: jackett-config
           persistentVolumeClaim:
-            claimName: jackett-config
+            claimName: jackett-config-longhorn
       nodeSelector:
         kubernetes.io/hostname: k3s-agent-02
