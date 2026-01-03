@@ -36,7 +36,7 @@ spec:
       volumes:
         - name: saved
           persistentVolumeClaim:
-            claimName: saved
+            claimName: vima-saved
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
