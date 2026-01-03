@@ -21,6 +21,7 @@ persistence:
   config:
     enabled: true
     mountPath: /config
+    existingClaim: freshrss-config-longhorn
 portal:
   open:
     enabled: true
