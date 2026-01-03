@@ -1524,6 +1524,16 @@ entries:
   jackett:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2026-01-03T02:47:52.586201876Z"
+    description: A Helm chart for jackett
+    digest: af9d3dd5ab2cd9faf9ab536e1308cacd750c2478c0d318cedaadeaa1c49222ad
+    name: jackett
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/jackett-1.0.3/jackett-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2024-12-23T03:13:33.201162353Z"
     description: A Helm chart for jackett
     digest: 155356a8238ed848dc3cef285660bcb79972fc750eefafea8e289e60205db40e
@@ -6184,4 +6194,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T02:42:21.281826955Z"
+generated: "2026-01-03T02:47:52.586598556Z"
