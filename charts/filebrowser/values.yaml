@@ -128,14 +128,14 @@ db:
     # -- Enable persistence for database
     enabled: true
     # -- Existing claim for the database
-    existingClaim: ""
+    existingClaim: "filebrowser-db-longhorn"
     # -- Storage class name for the database PVC
-    storageClassName: ""
+    storageClassName: "longhorn"
     # -- Access modes for the database PVC
     accessModes:
       - ReadWriteOnce
     # -- Size for the database PVC
-    size: 256Mi
+    size: 100Mi
 
 # -- Deployment strategy to use
 strategy:

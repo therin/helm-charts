@@ -2,8 +2,8 @@ apiVersion: v2
 name: filebrowser
 description: A Helm chart for the File Browser project
 type: application
-version: 1.0.13
-appVersion: v2.36.3
+version: 1.0.14
+appVersion: v2.53.0
 home: https://filebrowser.org
 keywords:
   - filebrowser
