@@ -3741,6 +3741,32 @@ entries:
   overleaf:
   - apiVersion: v2
     appVersion: 2.8.0
+    created: "2026-01-03T04:02:58.016088946Z"
+    dependencies:
+    - name: common
+      repository: file://../common
+      version: 4.5.4
+    - condition: redis.enabled
+      name: redis
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 20.7.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: oci://registry-1.docker.io/bitnamicharts
+      version: 16.4.3
+    description: A web-based collaborative LaTeX editor
+    digest: 50e3b9af8e1162a6df9a35e61719d04f72381d2a72872b653fb0bd230fdfc5ec
+    keywords:
+    - overleaf
+    - sharelatex
+    name: overleaf
+    sources:
+    - https://github.com/overleaf/overleaf
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/overleaf-3.3.24/overleaf-3.3.24.tgz
+    version: 3.3.24
+  - apiVersion: v2
+    appVersion: 2.8.0
     created: "2026-01-03T03:58:27.464057886Z"
     dependencies:
     - name: common
@@ -6325,4 +6351,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T03:58:27.597232236Z"
+generated: "2026-01-03T04:02:58.016674937Z"
