@@ -27,6 +27,9 @@ postgresql:
     registry: ghcr.io
     repository: bat-bs/bitnami-pgvector
     tag: pg16
+  primary:
+    persistence:
+      existingClaim: data-librechat-rag-api-postgresql-longhorn
   auth:
     dbhost: librechat-rag-api-postgresql.flux-system.svc.buran-kube.local
     database: librechat-vectordb
