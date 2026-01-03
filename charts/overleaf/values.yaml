@@ -98,6 +98,15 @@ redis:
   clusterDomain: buran-kube.local
   replica:
     replicaCount: 1
+    persistence:
+      storageClass: "longhorn"
+      existingClaim: "overleaf-redis-replica-longhorn"
+      size: 100Mi
+  master:
+    persistence:
+      storageClass: "longhorn"
+      existingClaim: "overleaf-redis-master-longhorn"
+      size: 100Mi
   auth:
     enabled: false
 
@@ -116,8 +125,9 @@ mongodb:
   persistence:
     enabled: true
     accessMode: ReadWriteOnce
-    size: 3Gi
-    # storageClass: ""
+    storageClass: "longhorn"
+    existingClaim: "overleaf-mongodb-longhorn"
+    size: 1Gi
   extraEnvVars:
     - name: LOG_LEVEL
       value: debug
