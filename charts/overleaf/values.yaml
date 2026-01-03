@@ -96,6 +96,9 @@ redis:
   enabled: true
   # fullnameOverride: overleaf-redis
   clusterDomain: buran-kube.local
+  global:
+    security:
+      allowInsecureImages: true
   image:
     registry: docker.io
     repository: bitnamilegacy/redis
@@ -123,6 +126,9 @@ mongodb:
   # replicaCount: 1
   clusterDomain: buran-kube.local
   # fullnameOverride: overleaf-mongodb
+  global:
+    security:
+      allowInsecureImages: true
   image:
     registry: docker.io
     repository: bitnamilegacy/mongodb
