@@ -324,6 +324,16 @@ entries:
   flare-solver:
   - apiVersion: v2
     appVersion: 1.0.1
+    created: "2026-01-03T02:42:21.281218161Z"
+    description: A Helm chart for flare-solver
+    digest: c41aaf5702551d07cef25d6289209f383857dc6fcf307dded1bc7e6a2440bed3
+    name: flare-solver
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/flare-solver-1.0.3/flare-solver-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 1.0.1
     created: "2024-12-23T03:36:37.518661398Z"
     description: A Helm chart for flare-solver
     digest: c7a2fc6ab310221b64b0a1d88e8e30f6aab7077850d8ec88d6e9e2e9611c2203
@@ -6174,4 +6184,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T02:07:07.082017928Z"
+generated: "2026-01-03T02:42:21.281826955Z"
