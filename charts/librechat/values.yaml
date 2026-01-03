@@ -4,7 +4,7 @@ image:
   repository: ghcr.io/danny-avila/librechat
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "v0.8.0-rc4"
+  tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
@@ -96,15 +96,15 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # -- PVC Storage Class
-  storageClass: "local-path"
+  storageClass: "longhorn"
 
   ## Data Persistent Volume existing claim name
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
   # -- Existing PVC
-  existingClaim: ""
+  existingClaim: "librechat-pvc-longhorn"
   # -- PVC Storage Request
-  size: 1Gi
+  size: 500Mi
   # -- Additional annotations for PVC
   annotations: {}
 
@@ -296,15 +296,15 @@ meilisearch:
     ##   GKE, AWS & OpenStack)
     ##
     # -- PVC Storage Class
-    storageClass: "-"
+    storageClass: "longhorn"
 
     ## Data Persistent Volume existing claim name
     ## Requires persistence.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
     # -- Existing PVC
-    existingClaim: "release-name-meilisearch"
+    existingClaim: "release-name-meilisearch-longhorn"
     # -- PVC Storage Request
-    size: 5Gi
+    size: 500Mi
     # -- Additional annotations for PVC
     annotations: {}
     volume:
@@ -450,8 +450,9 @@ mongodb:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    # storageClass: "-"
+    storageClass: "longhorn"
+    existingClaim: "librechat-mongodb-longhorn"
     accessMode: ReadWriteOnce
-    size: 8Gi
+    size: 1Gi
 
   volumePermissions: { enabled: true }

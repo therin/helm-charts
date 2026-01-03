@@ -94,5 +94,5 @@ spec:
           name: librechat-config
         - name: images
           persistentVolumeClaim:
-            claimName: librechat-pvc
+            claimName: {{ .Values.persistence.existingClaim | default (printf "%s-pvc" (include "librechat.fullname" .)) }}
       {{- end }}

@@ -1,12 +1,11 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  creationTimestamp: null
-  name: release-name-meilisearch
+  name: release-name-meilisearch-longhorn
 spec:
   accessModes:
     - ReadWriteOnce
+  storageClassName: longhorn
   resources:
     requests:
-      storage: 5Gi
-status: {}
+      storage: 500Mi
