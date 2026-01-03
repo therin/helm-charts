@@ -3568,6 +3568,21 @@ entries:
   librechat-rag-api:
   - apiVersion: v2
     appVersion: v0.3.1
+    created: "2026-01-03T02:59:35.038193404Z"
+    dependencies:
+    - condition: postgresql.enabled
+      name: postgresql
+      repository: https://charts.bitnami.com/bitnami
+      version: 16.4.9
+    description: A Helm chart for LibreChat
+    digest: 59dd08f36860cbef468f1e7ac8a4f427d4d803a7d5acc255e0f3e299e84cbe82
+    name: librechat-rag-api
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/librechat-rag-api-0.3.2/librechat-rag-api-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: v0.3.1
     created: "2025-09-14T05:43:31.350476254Z"
     dependencies:
     - condition: postgresql.enabled
@@ -6194,4 +6209,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-03T02:47:52.586598556Z"
+generated: "2026-01-03T02:59:35.038717551Z"
