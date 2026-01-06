@@ -8,6 +8,7 @@ metadata:
 data:
   soju.conf: |
     listen {{ .Values.config.listen }}
+    listen unix+admin:///var/lib/soju/admin.sock
     hostname {{ .Values.config.hostname }}
     title {{ .Values.config.title }}
     db sqlite3 /var/lib/soju/soju.db
