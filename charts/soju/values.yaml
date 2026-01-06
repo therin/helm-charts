@@ -1,0 +1,27 @@
+replicaCount: 1
+
+image:
+  repository: codeberg.org/emersion/soju
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 6667
+
+persistence:
+  enabled: true
+  storageClass: longhorn
+  size: 1Gi
+
+config:
+  # listen directive - use irc+insecure for plain IRC (TLS handled by ingress/LB)
+  listen: "irc+insecure://0.0.0.0:6667"
+  # hostname for the bouncer
+  hostname: "soju.buran-kube.local"
+  # title shown to clients
+  title: "soju"
+  # message store: fs, db, or memory
+  messageStore: "fs /var/lib/soju/logs"
+
+nodeSelector: {}

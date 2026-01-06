@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+data:
+  soju.conf: |
+    listen {{ .Values.config.listen }}
+    hostname {{ .Values.config.hostname }}
+    title {{ .Values.config.title }}
+    db sqlite3 /var/lib/soju/soju.db
+    message-store {{ .Values.config.messageStore }}
