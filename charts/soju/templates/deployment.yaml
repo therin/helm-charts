@@ -21,14 +21,13 @@ spec:
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          args:
-            - "/etc/soju/soju.conf"
           ports:
             - containerPort: 6667
               protocol: TCP
           volumeMounts:
             - name: config
-              mountPath: /etc/soju
+              mountPath: /soju-config
+              subPath: soju.conf
             - name: data
               mountPath: /var/lib/soju
       volumes:

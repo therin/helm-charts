@@ -4,6 +4,6 @@ description: A Helm chart for soju IRC bouncer
 
 type: application
 
-version: 1.0.0
+version: 1.0.1
 
 appVersion: "0.10.1"
