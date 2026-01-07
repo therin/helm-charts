@@ -16,6 +16,8 @@ spec:
       labels:
         {{- include "telegram-mcp-server.selectorLabels" . | nindent 8 }}
     spec:
+      imagePullSecrets:
+        - name: regcred
       securityContext:
         fsGroup: 1000  # node user's GID - ensures PVC is writable
       {{- if .Values.session.existingSecret }}
