@@ -30,6 +30,8 @@ config:
     autoconnect: false
     # Auth mode: optional, mandatory, disabled, external, oauth2
     auth: "mandatory"
+    # Ping interval in seconds to keep WebSocket alive (Cloudflare times out at 100s)
+    ping: 60
   # Default nickname (optional)
   # nick: ""
   # Auto-join channels (optional, usually handled by soju bouncer)

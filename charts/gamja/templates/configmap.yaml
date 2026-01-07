@@ -11,7 +11,8 @@ data:
       "server": {
         "url": {{ .Values.config.server.url | quote }},
         "autoconnect": {{ .Values.config.server.autoconnect }},
-        "auth": {{ .Values.config.server.auth | quote }}
+        "auth": {{ .Values.config.server.auth | quote }},
+        "ping": {{ .Values.config.server.ping }}
       }
       {{- if .Values.config.nick }},
       "nick": {{ .Values.config.nick | quote }}
