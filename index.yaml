@@ -1544,6 +1544,19 @@ entries:
   gamja:
   - apiVersion: v2
     appVersion: latest
+    created: "2026-01-07T00:27:23.594895109Z"
+    description: A Helm chart for gamja IRC web client
+    digest: 43ed22c5a21791494056b0c6351d4a412f1afab5ceb6fa1f0d159f66e978a8ce
+    home: https://codeberg.org/emersion/gamja
+    name: gamja
+    sources:
+    - https://codeberg.org/emersion/gamja
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/gamja-1.1.2/gamja-1.1.2.tgz
+    version: 1.1.2
+  - apiVersion: v2
+    appVersion: latest
     created: "2026-01-07T00:25:51.879070245Z"
     description: A Helm chart for gamja IRC web client
     digest: 45c4ef1bf4816410e01ffb951ba870e0671878674f5468c01e0d40f1ac2a7943
@@ -6494,4 +6507,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-07T00:25:51.87971229Z"
+generated: "2026-01-07T00:27:23.595408794Z"
