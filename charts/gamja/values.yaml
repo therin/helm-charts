@@ -5,17 +5,27 @@ image:
   tag: latest
   pullPolicy: IfNotPresent
 
+nginx:
+  image:
+    repository: nginx
+    tag: alpine
+    pullPolicy: IfNotPresent
+
 service:
   type: ClusterIP
   port: 80
 
+# soju backend for websocket proxy
+soju:
+  # Service name for soju in cluster
+  service: "soju.flux-system.svc.cluster.local"
+  websocketPort: 3030
+
 # gamja config.json settings
 config:
   server:
-    # WebSocket URL to soju bouncer
-    # Use full URL like ws://192.168.4.244:3030 for direct access
-    # Or /socket if using reverse proxy
-    url: "ws://192.168.4.244:3030"
+    # WebSocket URL - use /socket for nginx proxy
+    url: "/socket"
     # Auto-connect without showing login UI
     autoconnect: false
     # Auth mode: optional, mandatory, disabled, external, oauth2
