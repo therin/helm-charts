@@ -22,29 +22,16 @@ spec:
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - containerPort: 6667
+            - containerPort: 80
               protocol: TCP
-            {{- if .Values.config.websocket.enabled }}
-            - containerPort: 3030
-              protocol: TCP
-            {{- end }}
           volumeMounts:
             - name: config
-              mountPath: /soju-config
-              subPath: soju.conf
-            - name: data
-              mountPath: /var/lib/soju
+              mountPath: /gamja-config.json
+              subPath: config.json
       volumes:
         - name: config
           configMap:
             name: {{ .Chart.Name }}
-        - name: data
-          {{- if .Values.persistence.enabled }}
-          persistentVolumeClaim:
-            claimName: {{ .Chart.Name }}-data
-          {{- else }}
-          emptyDir: {}
-          {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

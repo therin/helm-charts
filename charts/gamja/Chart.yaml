@@ -1,0 +1,9 @@
+apiVersion: v2
+name: gamja
+description: A Helm chart for gamja IRC web client
+type: application
+version: 1.0.0
+appVersion: "latest"
+home: https://codeberg.org/emersion/gamja
+sources:
+  - https://codeberg.org/emersion/gamja

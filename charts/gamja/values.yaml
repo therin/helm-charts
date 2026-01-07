@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: codeberg.org/emersion/gamja
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+# gamja config.json settings
+config:
+  server:
+    # WebSocket URL to soju bouncer
+    # Use full URL like ws://192.168.4.244:3030 for direct access
+    # Or /socket if using reverse proxy
+    url: "ws://192.168.4.244:3030"
+    # Auto-connect without showing login UI
+    autoconnect: false
+    # Auth mode: optional, mandatory, disabled, external, oauth2
+    auth: "mandatory"
+  # Default nickname (optional)
+  # nick: ""
+  # Auto-join channels (optional, usually handled by soju bouncer)
+  # autojoin: "#channel"
+
+nodeSelector: {}

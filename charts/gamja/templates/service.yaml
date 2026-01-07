@@ -10,13 +10,7 @@ spec:
   selector:
     app: {{ .Chart.Name }}
   ports:
-    - name: irc
+    - name: http
       port: {{ .Values.service.port }}
-      targetPort: 6667
+      targetPort: 80
       protocol: TCP
-    {{- if .Values.config.websocket.enabled }}
-    - name: websocket
-      port: 3030
-      targetPort: 3030
-      protocol: TCP
-    {{- end }}

@@ -23,5 +23,9 @@ config:
   title: "soju"
   # message store: fs, db, or memory
   messageStore: "fs /var/lib/soju/logs"
+  # websocket listener for web clients (gamja)
+  websocket:
+    enabled: true
+    listen: "ws+insecure://0.0.0.0:3030"
 
 nodeSelector: {}

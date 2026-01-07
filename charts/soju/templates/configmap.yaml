@@ -8,6 +8,9 @@ metadata:
 data:
   soju.conf: |
     listen {{ .Values.config.listen }}
+    {{- if .Values.config.websocket.enabled }}
+    listen {{ .Values.config.websocket.listen }}
+    {{- end }}
     listen unix+admin:///var/lib/soju/admin.sock
     hostname {{ .Values.config.hostname }}
     title {{ .Values.config.title }}

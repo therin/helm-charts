@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name }}
+  labels:
+    app: {{ .Chart.Name }}
+data:
+  config.json: |
+    {
+      "server": {
+        "url": {{ .Values.config.server.url | quote }},
+        "autoconnect": {{ .Values.config.server.autoconnect }},
+        "auth": {{ .Values.config.server.auth | quote }}
+      }
+      {{- if .Values.config.nick }},
+      "nick": {{ .Values.config.nick | quote }}
+      {{- end }}
+      {{- if .Values.config.autojoin }},
+      "autojoin": {{ .Values.config.autojoin | quote }}
+      {{- end }}
+    }
