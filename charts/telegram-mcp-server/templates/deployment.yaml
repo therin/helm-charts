@@ -1,0 +1,108 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "telegram-mcp-server.fullname" . }}
+  labels:
+    {{- include "telegram-mcp-server.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate  # Ensures old pod is terminated before new one starts (required for RWO PVC)
+  selector:
+    matchLabels:
+      {{- include "telegram-mcp-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "telegram-mcp-server.selectorLabels" . | nindent 8 }}
+    spec:
+      securityContext:
+        fsGroup: 1000  # node user's GID - ensures PVC is writable
+      {{- if and .Values.session.existingSecret .Values.persistence.enabled }}
+      initContainers:
+        - name: copy-session
+          image: busybox:latest
+          command:
+            - sh
+            - -c
+            - |
+              # Only copy if session doesn't exist yet (preserve existing session on restarts)
+              if [ ! -f /app/data/session.json ]; then
+                echo "Copying pre-authenticated session..."
+                cp /session-secret/session.json /app/data/session.json
+                chown 1000:1000 /app/data/session.json
+                chmod 600 /app/data/session.json
+              else
+                echo "Session already exists, skipping copy"
+              fi
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+            - name: session-secret
+              mountPath: /session-secret
+              readOnly: true
+      {{- end }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            - name: MCP_HOST
+              value: "0.0.0.0"
+            - name: MCP_PORT
+              value: "8080"
+            - name: NODE_ENV
+              value: "production"
+            {{- if .Values.demoMode }}
+            - name: DEMO_MODE
+              value: "true"
+            {{- else }}
+            - name: TELEGRAM_API_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "telegram-mcp-server.secretName" . }}
+                  key: api-id
+            - name: TELEGRAM_API_HASH
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "telegram-mcp-server.secretName" . }}
+                  key: api-hash
+            - name: TELEGRAM_PHONE_NUMBER
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "telegram-mcp-server.secretName" . }}
+                  key: phone-number
+            {{- end }}
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 5
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          {{- if .Values.persistence.enabled }}
+          volumeMounts:
+            - name: data
+              mountPath: /app/data
+          {{- end }}
+      {{- if or .Values.persistence.enabled .Values.session.existingSecret }}
+      volumes:
+        {{- if .Values.persistence.enabled }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ include "telegram-mcp-server.fullname" . }}-data
+        {{- end }}
+        {{- if .Values.session.existingSecret }}
+        - name: session-secret
+          secret:
+            secretName: {{ .Values.session.existingSecret }}
+        {{- end }}
+      {{- end }}

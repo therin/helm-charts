@@ -1,0 +1,45 @@
+# Set to 0 to deploy paused (useful for initial setup/data transfer)
+replicaCount: 0
+
+image:
+  repository: ghcr.io/therin/telegram-mcp-server
+  tag: "main"
+  pullPolicy: Always  # Always pull to get latest main branch build
+
+# Telegram credentials - set these or use existingSecret
+telegram:
+  existingSecret: ""  # Secret with api-id, api-hash, phone-number keys
+  apiId: ""
+  apiHash: ""
+  phoneNumber: ""
+
+# Pre-authenticated session (recommended for K8s)
+# Run locally first to complete interactive auth, then:
+#   kubectl create secret generic telegram-session --from-file=session.json=./data/session.json
+session:
+  existingSecret: ""  # Secret containing session.json file
+
+# Demo mode - no credentials needed
+demoMode: false
+
+service:
+  type: ClusterIP
+  port: 8080
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+persistence:
+  enabled: true
+  size: 1Gi
+  # Use existing StorageClass (e.g., "longhorn") or create one with createStorageClass
+  storageClass: ""
+  # Create a custom StorageClass with Retain policy (recommended for data safety)
+  createStorageClass: false
+  longhorn:
+    replicas: 2  # Number of Longhorn volume replicas
