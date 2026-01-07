@@ -18,12 +18,21 @@ spec:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:
       containers:
+        # nginx reverse proxy - exposed on port 8080
+        - name: nginx
+          image: {{ .Values.nginx.image.repository }}:{{ .Values.nginx.image.tag }}
+          imagePullPolicy: {{ .Values.nginx.image.pullPolicy }}
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: nginx.conf
+        # gamja static files - internal port 80
         - name: {{ .Chart.Name }}
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          ports:
-            - containerPort: 80
-              protocol: TCP
           volumeMounts:
             - name: config
               mountPath: /gamja-config.json
@@ -32,6 +41,15 @@ spec:
         - name: config
           configMap:
             name: {{ .Chart.Name }}
+            items:
+              - key: config.json
+                path: config.json
+        - name: nginx-config
+          configMap:
+            name: {{ .Chart.Name }}
+            items:
+              - key: nginx.conf
+                path: nginx.conf
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
