@@ -1541,6 +1541,20 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/freshrss-20.2.3/freshrss-20.2.3.tgz
     version: 20.2.3
+  gamja:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2026-01-07T00:08:06.701438703Z"
+    description: A Helm chart for gamja IRC web client
+    digest: 6b8013946a275bcde37530ab9de7ecba72a41cbd84baa445a192a609c8b905d6
+    home: https://codeberg.org/emersion/gamja
+    name: gamja
+    sources:
+    - https://codeberg.org/emersion/gamja
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/gamja-1.0.0/gamja-1.0.0.tgz
+    version: 1.0.0
   jackett:
   - apiVersion: v2
     appVersion: 1.0.1
@@ -6089,6 +6103,16 @@ entries:
   soju:
   - apiVersion: v2
     appVersion: 0.10.1
+    created: "2026-01-07T00:08:06.853007Z"
+    description: A Helm chart for soju IRC bouncer
+    digest: 99b643e6c5650b37f1a9c004aad500884dbb2f55b63f83a76de1f048ae25e61d
+    name: soju
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/soju-1.0.3/soju-1.0.3.tgz
+    version: 1.0.3
+  - apiVersion: v2
+    appVersion: 0.10.1
     created: "2026-01-06T22:31:01.023400765Z"
     description: A Helm chart for soju IRC bouncer
     digest: 2682e1a5ad25acb7390039450846b55f32249f3c27dabe5e83ddc1993c112924
@@ -6434,4 +6458,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-06T22:31:01.024087423Z"
+generated: "2026-01-07T00:08:06.853786352Z"
