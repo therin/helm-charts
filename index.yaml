@@ -6168,6 +6168,16 @@ entries:
   soju:
   - apiVersion: v2
     appVersion: 0.10.1
+    created: "2026-01-07T07:00:14.016940624Z"
+    description: A Helm chart for soju IRC bouncer
+    digest: 6cfb08c1299c3c23eee515116c34b26a74617e41d345fb4e4e5c6ba8ad333d1b
+    name: soju
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/soju-1.0.5/soju-1.0.5.tgz
+    version: 1.0.5
+  - apiVersion: v2
+    appVersion: 0.10.1
     created: "2026-01-07T00:16:09.198190461Z"
     description: A Helm chart for soju IRC bouncer
     digest: cfea55c8bcf556952103685c439cb0bc5af8070ad026834397b27c8638eb46bc
@@ -6572,4 +6582,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-07T04:03:08.181135893Z"
+generated: "2026-01-07T07:00:14.017364263Z"
