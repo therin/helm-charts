@@ -6407,6 +6407,26 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/sonarr-1.0.0/sonarr-1.0.0.tgz
     version: 1.0.0
+  telegram-mcp-server:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-01-07T03:31:27.769846293Z"
+    description: A Helm chart for Telegram MCP Server
+    digest: 732ac8ac8674b3725e34b4ad6d943d297bf0ecf17c0a4846aa16b2b9fd8f2f3b
+    home: https://github.com/therin/telegram-mcp-server
+    keywords:
+    - telegram
+    - mcp
+    - mcp-server
+    - ai
+    - claude
+    name: telegram-mcp-server
+    sources:
+    - https://github.com/therin/telegram-mcp-server
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/telegram-mcp-server-0.1.0/telegram-mcp-server-0.1.0.tgz
+    version: 0.1.0
   vima:
   - apiVersion: v2
     appVersion: 1.0.3
@@ -6533,4 +6553,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-07T01:00:19.699623328Z"
+generated: "2026-01-07T03:31:27.770312102Z"
