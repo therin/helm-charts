@@ -51,23 +51,21 @@ npm start
 #### Step 2: Create Kubernetes Secrets
 
 ```bash
-# Session secret (contains authenticated session)
-kubectl create secret generic telegram-session \
-  --from-file=session.json=./data/session.json
-
-# Credentials secret
+# Credentials secret (must be named 'telegram-creds')
 kubectl create secret generic telegram-creds \
   --from-literal=api-id=YOUR_API_ID \
   --from-literal=api-hash=YOUR_API_HASH \
   --from-literal=phone-number=+1234567890
+
+# Session secret (must be named 'telegram-session')
+kubectl create secret generic telegram-session \
+  --from-file=session.json=./data/session.json
 ```
 
 #### Step 3: Deploy with Helm
 
 ```bash
-helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-server \
-  --set telegram.existingSecret=telegram-creds \
-  --set session.existingSecret=telegram-session
+helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-server
 ```
 
 ## How It Works
@@ -111,11 +109,8 @@ The init container only copies the session on first deployment. On subsequent re
 | `image.repository` | Container image | `ghcr.io/therin/telegram-mcp-server` |
 | `image.tag` | Image tag | `main` |
 | `image.pullPolicy` | Pull policy | `Always` |
-| `telegram.existingSecret` | Secret with `api-id`, `api-hash`, `phone-number` keys | `""` |
-| `telegram.apiId` | Telegram API ID (if not using existingSecret) | `""` |
-| `telegram.apiHash` | Telegram API Hash (if not using existingSecret) | `""` |
-| `telegram.phoneNumber` | Phone number with country code | `""` |
-| `session.existingSecret` | Secret containing `session.json` file | `""` |
+| `telegram.existingSecret` | Secret with `api-id`, `api-hash`, `phone-number` keys | `telegram-creds` |
+| `session.existingSecret` | Secret containing `session.json` file | `telegram-session` |
 | `demoMode` | Run with mock data (no credentials needed) | `false` |
 | `service.type` | Kubernetes service type | `LoadBalancer` |
 | `service.port` | Service port | `8080` |
