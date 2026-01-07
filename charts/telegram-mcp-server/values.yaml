@@ -23,7 +23,7 @@ session:
 demoMode: false
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 8080
 
 resources:
@@ -35,11 +35,4 @@ resources:
     memory: 128Mi
 
 persistence:
-  enabled: true
-  size: 1Gi
-  # Use existing StorageClass (e.g., "longhorn") or create one with createStorageClass
-  storageClass: ""
-  # Create a custom StorageClass with Retain policy (recommended for data safety)
-  createStorageClass: false
-  longhorn:
-    replicas: 2  # Number of Longhorn volume replicas
+  size: 30Gi

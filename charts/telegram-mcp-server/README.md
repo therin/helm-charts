@@ -67,8 +67,7 @@ kubectl create secret generic telegram-creds \
 ```bash
 helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-server \
   --set telegram.existingSecret=telegram-creds \
-  --set session.existingSecret=telegram-session \
-  --set persistence.storageClass=longhorn
+  --set session.existingSecret=telegram-session
 ```
 
 ## How It Works
@@ -118,11 +117,9 @@ The init container only copies the session on first deployment. On subsequent re
 | `telegram.phoneNumber` | Phone number with country code | `""` |
 | `session.existingSecret` | Secret containing `session.json` file | `""` |
 | `demoMode` | Run with mock data (no credentials needed) | `false` |
-| `service.type` | Kubernetes service type | `ClusterIP` |
+| `service.type` | Kubernetes service type | `LoadBalancer` |
 | `service.port` | Service port | `8080` |
-| `persistence.enabled` | Enable persistent storage | `true` |
-| `persistence.size` | PVC size | `1Gi` |
-| `persistence.storageClass` | Storage class name | `""` |
+| `persistence.size` | PVC size | `30Gi` |
 | `resources.requests.cpu` | CPU request | `100m` |
 | `resources.requests.memory` | Memory request | `128Mi` |
 | `resources.limits.cpu` | CPU limit | `500m` |
@@ -146,6 +143,7 @@ The persistent volume is mounted at `/app/data/` and contains:
 
 | Setting | Value | Purpose |
 |---------|-------|---------|
+| `storageClassName` | `longhorn` | Hardcoded to use Longhorn storage |
 | `accessModes` | `ReadWriteOnce` | Single pod access (SQLite requirement) |
 | `strategy.type` | `Recreate` | Ensures old pod stops before new starts (RWO constraint) |
 | `fsGroup: 1000` | node user's GID | Ensures PVC is writable by non-root container |

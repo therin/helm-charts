@@ -18,7 +18,7 @@ spec:
     spec:
       securityContext:
         fsGroup: 1000  # node user's GID - ensures PVC is writable
-      {{- if and .Values.session.existingSecret .Values.persistence.enabled }}
+      {{- if .Values.session.existingSecret }}
       initContainers:
         - name: copy-session
           image: busybox:latest
@@ -88,21 +88,15 @@ spec:
             initialDelaySeconds: 5
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- if .Values.persistence.enabled }}
           volumeMounts:
             - name: data
               mountPath: /app/data
-          {{- end }}
-      {{- if or .Values.persistence.enabled .Values.session.existingSecret }}
       volumes:
-        {{- if .Values.persistence.enabled }}
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "telegram-mcp-server.fullname" . }}-data
-        {{- end }}
         {{- if .Values.session.existingSecret }}
         - name: session-secret
           secret:
             secretName: {{ .Values.session.existingSecret }}
         {{- end }}
-      {{- end }}

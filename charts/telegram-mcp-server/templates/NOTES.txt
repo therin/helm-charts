@@ -1,8 +1,0 @@
-Telegram MCP Server deployed!
-
-Access via port-forward:
-  kubectl port-forward svc/{{ include "telegram-mcp-server.fullname" . }} 8080:{{ .Values.service.port }}
-
-Then open:
-  Dashboard: http://localhost:8080/
-  MCP endpoint: http://localhost:8080/mcp
