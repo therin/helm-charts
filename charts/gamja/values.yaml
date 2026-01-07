@@ -17,8 +17,8 @@ service:
 
 # soju backend for websocket proxy
 soju:
-  # Service name for soju in cluster
-  service: "soju.flux-system.svc.cluster.local"
+  # Service name for soju in cluster (use short name, resolves within same namespace)
+  service: "soju"
   websocketPort: 3030
 
 # gamja config.json settings
