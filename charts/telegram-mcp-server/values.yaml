@@ -1,5 +1,4 @@
-# Set to 0 to deploy paused (useful for initial setup/data transfer)
-replicaCount: 0
+replicaCount: 1
 
 image:
   repository: ghcr.io/therin/telegram-mcp-server
@@ -10,11 +9,9 @@ image:
 telegram:
   existingSecret: "telegram-creds"
 
-# Pre-authenticated session secret (must contain: session.json file)
-# Run locally first to complete interactive auth, then:
-#   kubectl create secret generic telegram-session --from-file=session.json=./data/session.json
-session:
-  existingSecret: "telegram-session"
+# Session file (session.json) must be copied directly to the PVC before starting.
+# It's too large (~70MB with peer cache) for K8s secrets (3MB limit).
+# Use a temporary pod to copy from your source to the PVC at /app/data/session.json
 
 # Demo mode - no credentials needed
 demoMode: false
