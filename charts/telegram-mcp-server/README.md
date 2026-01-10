@@ -48,7 +48,7 @@ npm start
 # After successful login, session is saved to ./data/session.json
 ```
 
-#### Step 2: Create Kubernetes Secrets
+#### Step 2: Create Kubernetes Secret
 
 ```bash
 # Credentials secret (must be named 'telegram-creds')
@@ -56,16 +56,50 @@ kubectl create secret generic telegram-creds \
   --from-literal=api-id=YOUR_API_ID \
   --from-literal=api-hash=YOUR_API_HASH \
   --from-literal=phone-number=+1234567890
-
-# Session secret (must be named 'telegram-session')
-kubectl create secret generic telegram-session \
-  --from-file=session.json=./data/session.json
 ```
 
-#### Step 3: Deploy with Helm
+#### Step 3: Deploy with Helm (paused)
 
 ```bash
-helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-server
+helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-server \
+  --set replicaCount=0
+```
+
+#### Step 4: Copy Session to PVC
+
+The session file is too large for K8s secrets (~70MB with peer cache, limit is 3MB), so copy it directly to the PVC:
+
+```bash
+# Create a temporary pod to copy the session file
+kubectl run pvc-copy --rm -i --restart=Never --image=alpine \
+  --overrides='{
+    "spec": {
+      "containers": [{
+        "name": "pvc-copy",
+        "image": "alpine",
+        "command": ["sh", "-c", "cp -v /source/session.json /dest/ && chown 1000:1000 /dest/session.json && ls -lh /dest/"],
+        "volumeMounts": [
+          {"name": "source", "mountPath": "/source", "readOnly": true},
+          {"name": "dest", "mountPath": "/dest"}
+        ]
+      }],
+      "volumes": [
+        {"name": "source", "hostPath": {"path": "/path/to/local/data", "type": "Directory"}},
+        {"name": "dest", "persistentVolumeClaim": {"claimName": "telegram-mcp-server-data"}}
+      ]
+    }
+  }'
+```
+
+If your source is on NFS, replace the hostPath volume with:
+```yaml
+{"name": "source", "nfs": {"server": "YOUR_NFS_SERVER", "path": "/your/nfs/path"}}
+```
+
+#### Step 5: Scale Up
+
+```bash
+kubectl scale deployment telegram-mcp-server --replicas=1
 ```
 
 ## How It Works
@@ -82,9 +116,15 @@ helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-s
                             │
                             ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ KUBERNETES SECRETS                                          │
+│ COPY TO PVC (session.json is ~70MB, too large for secrets)  │
 │                                                             │
-│  telegram-session: session.json file                        │
+│  kubectl run pvc-copy ... (see Step 4 above)                │
+└─────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+┌─────────────────────────────────────────────────────────────┐
+│ KUBERNETES SECRET                                           │
+│                                                             │
 │  telegram-creds: api-id, api-hash, phone-number             │
 └─────────────────────────────────────────────────────────────┘
                             │
@@ -92,25 +132,22 @@ helm install telegram-mcp-server oci://ghcr.io/therin/helm-charts/telegram-mcp-s
 ┌─────────────────────────────────────────────────────────────┐
 │ POD STARTUP                                                 │
 │                                                             │
-│  [init: copy-session] ──► copies session.json to PVC        │
-│          │                (skipped if already exists)       │
-│          ▼                                                  │
-│  [main: telegram-mcp-server] ──► uses existing session      │
+│  [main: telegram-mcp-server] ──► uses session from PVC      │
 │                                  no interactive auth needed │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-The init container only copies the session on first deployment. On subsequent restarts, the existing session on the PVC is preserved.
+The session file persists on the PVC across pod restarts.
 
 ## Configuration
 
 | Parameter | Description | Default |
 |-----------|-------------|---------|
+| `replicaCount` | Number of replicas | `1` |
 | `image.repository` | Container image | `ghcr.io/therin/telegram-mcp-server` |
 | `image.tag` | Image tag | `main` |
 | `image.pullPolicy` | Pull policy | `Always` |
 | `telegram.existingSecret` | Secret with `api-id`, `api-hash`, `phone-number` keys | `telegram-creds` |
-| `session.existingSecret` | Secret containing `session.json` file | `telegram-session` |
 | `demoMode` | Run with mock data (no credentials needed) | `false` |
 | `service.type` | Kubernetes service type | `LoadBalancer` |
 | `service.port` | Service port | `8080` |
@@ -185,14 +222,43 @@ kubectl exec deployment/telegram-mcp-server -- node -e "
 
 For large databases (e.g., 10GB+), `kubectl cp` can be slow and unreliable. Here are better options:
 
-#### Setup: Create a Transfer Pod
-
-First, scale down the main deployment and create a temporary pod with the PVC mounted:
+#### Setup: Scale Down First
 
 ```bash
 # Scale down to release the PVC (RWO can only be mounted by one pod)
 kubectl scale deployment telegram-mcp-server --replicas=0
+```
 
+#### Option A: Direct Copy from NFS (Recommended)
+
+If your database is on NFS storage, copy directly without intermediate steps:
+
+```bash
+kubectl run pvc-migrator --rm -i --restart=Never --image=alpine \
+  --overrides='{
+    "spec": {
+      "containers": [{
+        "name": "migrator",
+        "image": "alpine",
+        "command": ["sh", "-c", "cp -v /source/messages.db /dest/ && chown 1000:1000 /dest/messages.db && ls -lh /dest/"],
+        "volumeMounts": [
+          {"name": "source", "mountPath": "/source", "readOnly": true},
+          {"name": "dest", "mountPath": "/dest"}
+        ]
+      }],
+      "volumes": [
+        {"name": "source", "nfs": {"server": "YOUR_NFS_SERVER", "path": "/your/nfs/path"}},
+        {"name": "dest", "persistentVolumeClaim": {"claimName": "telegram-mcp-server-data"}}
+      ]
+    }
+  }'
+```
+
+#### Option B: Using a Transfer Pod
+
+Create a temporary pod with the PVC mounted for more complex transfers:
+
+```bash
 # Create transfer pod
 kubectl run transfer --image=alpine --restart=Never --overrides='
 {
@@ -219,7 +285,7 @@ kubectl run transfer --image=alpine --restart=Never --overrides='
 kubectl wait --for=condition=Ready pod/transfer --timeout=60s
 ```
 
-#### Option A: HTTP Download (Easiest if pod can reach your machine)
+#### Option C: HTTP Download
 
 ```bash
 # On your local machine - serve the database file
@@ -230,21 +296,7 @@ python3 -m http.server 8000
 kubectl exec transfer -- wget -O /data/messages.db http://YOUR_LOCAL_IP:8000/messages.db
 ```
 
-#### Option B: Netcat Streaming (Fastest on local network)
-
-```bash
-# Terminal 1: Port-forward to the transfer pod
-kubectl exec transfer -- apk add --no-cache netcat-openbsd
-kubectl port-forward pod/transfer 9999:9999
-
-# Terminal 2: Stream the database (with progress via pv)
-pv messages.db | nc localhost 9999
-
-# In the pod (run before starting the stream)
-kubectl exec transfer -- sh -c "nc -l -p 9999 > /data/messages.db"
-```
-
-#### Option C: kubectl cp with Compression (Simpler but slower)
+#### Option D: kubectl cp with Compression
 
 ```bash
 # Compress locally first
@@ -255,16 +307,6 @@ kubectl cp messages.db.gz transfer:/data/messages.db.gz
 
 # Decompress in pod
 kubectl exec transfer -- gunzip /data/messages.db.gz
-```
-
-#### Option D: Rsync over kubectl exec
-
-```bash
-# Install rsync in transfer pod
-kubectl exec transfer -- apk add --no-cache rsync
-
-# Use rsync with kubectl as transport
-rsync -av --progress -e 'kubectl exec -i transfer --' messages.db rsync:/data/messages.db
 ```
 
 #### Cleanup After Transfer
@@ -302,37 +344,20 @@ Telegram sessions can expire if:
 - Account is inactive for extended periods
 - Telegram invalidates it for security reasons
 
-If the session expires, repeat the local authentication process and update the secret:
+If the session expires, repeat the local authentication process and copy the new session to the PVC:
 
 ```bash
-kubectl delete secret telegram-session
-kubectl create secret generic telegram-session \
-  --from-file=session.json=./data/session.json
+# Scale down first
+kubectl scale deployment telegram-mcp-server --replicas=0
 
-# Restart the pod to pick up new session
-kubectl rollout restart deployment telegram-mcp-server
-```
+# Copy new session.json to PVC (see Step 4 in Installation)
+# ...
 
-### Forcing Session Refresh
-
-To force the init container to re-copy the session from the secret:
-
-```bash
-# Delete the existing session from the PVC
-kubectl exec deployment/telegram-mcp-server -- rm /app/data/session.json
-
-# Restart to trigger init container
-kubectl rollout restart deployment telegram-mcp-server
+# Scale back up
+kubectl scale deployment telegram-mcp-server --replicas=1
 ```
 
 ## Troubleshooting
-
-### Pod stuck in Init
-
-Check init container logs:
-```bash
-kubectl logs deployment/telegram-mcp-server -c copy-session
-```
 
 ### Authentication errors
 
