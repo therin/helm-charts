@@ -20,13 +20,14 @@ service:
   type: LoadBalancer
   port: 8080
 
+# Increased for large SQLite database (20GB+)
 resources:
   limits:
+    cpu: 2000m
+    memory: 2Gi
+  requests:
     cpu: 500m
     memory: 512Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
 
 persistence:
   size: 30Gi
