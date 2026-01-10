@@ -21,8 +21,8 @@ config:
   hostname: "soju.buran-kube.local"
   # title shown to clients
   title: "soju"
-  # message store: fs, db, or memory
-  messageStore: "fs /var/lib/soju/logs"
+  # message store: db (default, recommended), fs, or memory
+  messageStore: "db"
   # websocket listener for web clients (gamja)
   websocket:
     enabled: true
