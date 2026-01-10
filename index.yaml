@@ -6420,6 +6420,25 @@ entries:
   telegram-mcp-server:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2026-01-10T05:33:33.034197646Z"
+    description: A Helm chart for Telegram MCP Server
+    digest: 3e4620393b8948cd94b55bca99031189ca1cf4f3536b1df9c60debb2825ba349
+    home: https://github.com/therin/telegram-mcp-server
+    keywords:
+    - telegram
+    - mcp
+    - mcp-server
+    - ai
+    - claude
+    name: telegram-mcp-server
+    sources:
+    - https://github.com/therin/telegram-mcp-server
+    type: application
+    urls:
+    - https://github.com/therin/helm-charts/releases/download/telegram-mcp-server-0.3.2/telegram-mcp-server-0.3.2.tgz
+    version: 0.3.2
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2026-01-10T04:34:58.801940491Z"
     description: A Helm chart for Telegram MCP Server
     digest: d3f5aa7872bebcb0d0d177ae608daeba36c4b3c62dd54f94ba5638c31112cce5
@@ -6620,4 +6639,4 @@ entries:
     urls:
     - https://github.com/therin/helm-charts/releases/download/xray-proxy-0.1.0/xray-proxy-0.1.0.tgz
     version: 0.1.0
-generated: "2026-01-10T04:34:58.80283168Z"
+generated: "2026-01-10T05:33:33.035247425Z"
