@@ -20,30 +20,6 @@ spec:
         - name: regcred
       securityContext:
         fsGroup: 1000  # node user's GID - ensures PVC is writable
-      {{- if .Values.session.existingSecret }}
-      initContainers:
-        - name: copy-session
-          image: busybox:latest
-          command:
-            - sh
-            - -c
-            - |
-              # Only copy if session doesn't exist yet (preserve existing session on restarts)
-              if [ ! -f /app/data/session.json ]; then
-                echo "Copying pre-authenticated session..."
-                cp /session-secret/session.json /app/data/session.json
-                chown 1000:1000 /app/data/session.json
-                chmod 600 /app/data/session.json
-              else
-                echo "Session already exists, skipping copy"
-              fi
-          volumeMounts:
-            - name: data
-              mountPath: /app/data
-            - name: session-secret
-              mountPath: /session-secret
-              readOnly: true
-      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
@@ -97,8 +73,3 @@ spec:
         - name: data
           persistentVolumeClaim:
             claimName: {{ include "telegram-mcp-server.fullname" . }}-data
-        {{- if .Values.session.existingSecret }}
-        - name: session-secret
-          secret:
-            secretName: {{ .Values.session.existingSecret }}
-        {{- end }}

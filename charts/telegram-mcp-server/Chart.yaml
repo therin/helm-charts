@@ -2,7 +2,7 @@ apiVersion: v2
 name: telegram-mcp-server
 description: A Helm chart for Telegram MCP Server
 type: application
-version: 0.3.0
+version: 0.3.1
 appVersion: "1.0.0"
 home: https://github.com/therin/telegram-mcp-server
 sources:
